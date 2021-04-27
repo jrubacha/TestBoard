@@ -1,20 +1,24 @@
-/*
-17012
+// TODO: Read the following instructions
+/**
+ * The purpose of this assignment is to introduce you to using input in order to control functions.
+ *
+ * You will learn about logic statements and the gamepad.
+ *
+ * Except where prompted, do not make changes to the program.
  */
-
+//////////////////////////////////////////////////////////////////////////////////////////
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-@TeleOp(name="TestBoard", group="TestBoard")
-@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
+@TeleOp(name="Assignment 4", group="TestBoard")
+//@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
 //////////////////////////////////////////////////////////////////////////////////////////
 
-public class TestBoardOpMode extends OpMode {
+public class Assignment4 extends OpMode {
     private ElapsedTime runtime = new ElapsedTime();
     BotUtilities utilities;
     TestBoard testboard;
@@ -27,8 +31,9 @@ public class TestBoardOpMode extends OpMode {
     public void init() {
         utilities = new BotUtilities(this.telemetry);
         testboard = new TestBoard(this.hardwareMap, this.telemetry);
+
         // Set up our telemetry dashboard
-        getTelemetry();
+        updateTelemetry(telemetry);
 
         // Tell the driver that initialization is complete.
         telemetry.addData("Status", "Initialized    :)");
@@ -47,7 +52,7 @@ public class TestBoardOpMode extends OpMode {
     @Override
     public void start() {
         runtime.reset();
-        getTelemetry();
+        updateTelemetry(telemetry);
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -58,9 +63,9 @@ public class TestBoardOpMode extends OpMode {
         //checkDriverController();
         testboard.turnFlashlightOn();
         telemetry.addData("Pot value: ", testboard.getPotValue());
-        // Call Telemetry
-        getTelemetry();
 
+        // Call Telemetry
+        updateTelemetry(telemetry);
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -73,41 +78,34 @@ public class TestBoardOpMode extends OpMode {
         telemetry.update();
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
-    /*                              TELEOP-SPECIFIC METHODS                                 */
-//////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
-/*
+
     public void checkDriverController() {
-        telemetry.addData("Left stick value: ", gamepad1.left_stick_y);
-        telemetry.addData("Right stick value: ", gamepad1.right_stick_y);
-
-        if (testboard.isRevTouchPressed()) {
-            telemetry.addLine("REV TOUCH PRESSED");
-        } else {
-            telemetry.addLine("No rev touch");
+        // Example if statement that adds a telemetry message if the square is pushed
+        if (gamepad1.square) {
+            telemetry.addLine("Square pushed");
         }
 
-        if (testboard.isVexBumpPressed()) {
-            telemetry.addLine("VEX BUMP");
-        } else {
-            telemetry.addLine("No vex bump");
-        }
+        // TODO: Use an if statement to add telemetry statement for the gamepad to show only when the triangle is pushed
 
-        if (gamepad1.triangle) {
-            testboard.turnFlashlightOn();
-        } else {
-            testboard.turnFlashlightOff();
-        }
-    }   // checkDriverController
-*/
-    public void getTelemetry() {
-        // Show the elapsed game time
-        telemetry.addData("Run Time: ", runtime.toString());
 
-        telemetry.update();
-    }  // getTelemetry
+        // TODO: Complete the if-elseif-else statement below to control the servo position using the triangle and cross buttons. You will need to uncomment the code first
+        // You can quickly comment/uncomment code by highlighting all of it and press CTRL+/ on your keyboard
+//        if (gamepad1.) {
+//            testboard.setServoPosition(1);
+//        } else if () {
+//
+//        }
+
+        // TODO: Add if-elseif-else statement to control motor spinning by pushing the square button
+
+
+
+        // TODO: Set power to the motor based on the left_stick_y value
+
+
+
+    }
 
 }
 
