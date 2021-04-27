@@ -1,7 +1,10 @@
 // TODO: Read the following instructions
 /**
-The purpose of this assignment is to introduce you to using input in order to control functions.
-You will learn about logic statements and the gamepad.
+ * The purpose of this assignment is to introduce you to using input in order to control functions.
+ *
+ * You will learn about logic statements and the gamepad.
+ *
+ * Except where prompted, do not make changes to the program.
  */
 //////////////////////////////////////////////////////////////////////////////////////////
 package org.firstinspires.ftc.teamcode;
@@ -75,10 +78,6 @@ public class Assignment3 extends OpMode {
         telemetry.update();
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
-    /*                              TELEOP-SPECIFIC METHODS                                 */
-//////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
     public void checkDriverController() {
@@ -87,15 +86,19 @@ public class Assignment3 extends OpMode {
 
         // TODO: Complete the if-elseif-else statement below to control the servo position using the triangle and cross buttons. You will need to uncomment the code first
         // You can quickly comment/uncomment code by highlighting all of it and press CTRL+/ on your keyboard
-//        if (gamepad1.triangle) {
+//        if (gamepad1.) {
 //            testboard.setServoPosition(1);
-//        } else if (gamepad1.cross) {
-//            testboard.setServoPosition(-1);
+//        } else if () {
+//
 //        }
 
         // TODO: Add if-elseif-else statement to control motor spinning by pushing the square button
 
+
+
         // TODO: Set power to the motor based on the left_stick_y value
+
+
 
     }
 
