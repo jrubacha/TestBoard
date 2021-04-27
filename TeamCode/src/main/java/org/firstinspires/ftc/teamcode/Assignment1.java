@@ -1,5 +1,10 @@
-/*
-17012
+/** TODO: Read the following instructions
+ *
+ * Follow along with the assignment on Canvas to use this OpMode
+ *
+ * You will be running the program and making small changes to the values used in the program. You will not need to write any new code for this assignment.
+ *
+ * Except where specified, do NOT make any changes to the program.
  */
 
 package org.firstinspires.ftc.teamcode;
@@ -8,17 +13,6 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-//////////////////////////////////////////////////////////////////////////////////////////
-/*
-Assignment #1 OpMode
-
-Follow along with the assignment on Canvas to use this OpMode
-
-You will be running the program and making small changes to the values used in the
- program. You will not need to write any new code for this assignment.
-
-Except where specified, do NOT make any changes to the program
-*/
 //////////////////////////////////////////////////////////////////////////////////////////
 @TeleOp(name="Assignment 1", group="TestBoard")
 // TODO: For question #?, change the text inside the quotes above to something other than Assignment 1
