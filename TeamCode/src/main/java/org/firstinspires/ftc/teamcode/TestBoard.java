@@ -25,12 +25,14 @@ public class TestBoard {
 
     public TestBoard(HardwareMap hardwareMap, Telemetry telemetry) {
         this.telemetry = telemetry;
-        myServo = hardwareMap.get(Servo.class, "vexservo");
+        myServo = hardwareMap.get(Servo.class, "myServo");
         myRevTouch = hardwareMap.get(TouchSensor.class, "revTouchButton");
         flashlight = hardwareMap.get(LED.class, "flashlight");
         vexPushButton = hardwareMap.get(TouchSensor.class, "vexPushButton");
         pot = hardwareMap.get(AnalogInput.class, "potentiometer");
         limitSwitch = hardwareMap.get(TouchSensor.class, "limitSwitch");
+        myCRServo = hardwareMap.get(CRServo.class, "vexCRServo");
+        myMotor = hardwareMap.get(DcMotor.class, "testBoardMotor");
     }
 
     public void turnFlashlightOn(){
