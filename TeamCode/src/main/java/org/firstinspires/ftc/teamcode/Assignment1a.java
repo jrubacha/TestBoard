@@ -15,10 +15,10 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 //////////////////////////////////////////////////////////////////////////////////////////
-@Autonomous(name= "Assignment 1", group="Assignments")
+@Autonomous(name= "Assignment 1a", group="Assignments")
 //@Disabled
 //////////////////////////////////////////////////////////////////////////////////////////
-public class Assignment1 extends LinearOpMode {
+public class Assignment1a extends LinearOpMode {
     BotUtilities util;
     TestBoard testboard;
     private ElapsedTime runtime = new ElapsedTime();
