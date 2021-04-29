@@ -36,13 +36,14 @@ public class Assignment1 extends LinearOpMode {
 
         // Motion has started
         runtime.reset();
-        runEverything();
-
-        callTelemetry();
+        while (opModeIsActive()) {
+            //runEverything();
+            callTelemetry();
+        }
     }
     //////////////////////////////////////////////////////////////////////////////////////////
     private void runEverything(){
-        int motorPower = 1, servoPosition = 1;
+        double motorPower = 0.25, servoPosition = 1;
         int roundedRunTime = (int) runtime.seconds();
         if (roundedRunTime % 5 == 0) {
             motorPower = motorPower * -1;
@@ -50,6 +51,7 @@ public class Assignment1 extends LinearOpMode {
         }
         testboard.setServoPosition(servoPosition);
         testboard.setMotorPower(motorPower);
+        testboard.setCRServoPower(motorPower);
     }
 
     private void callTelemetry() {
@@ -59,10 +61,11 @@ public class Assignment1 extends LinearOpMode {
         // Display Values of all the attached sensors
         telemetry.addLine("\n=== Sensors ===");
         telemetry.addData("Limit switch status", testboard.limitSwitchState());
-        telemetry.addData("Bump switch status", testboard.bumpSwitchState());
+        //telemetry.addData("Bump switch status", testboard.bumpSwitchState());
         telemetry.addData("Rev Touch status", testboard.revTouchState());
         telemetry.addData("Potentiometer Value", testboard.getPotValue());
         telemetry.addData("Encoder Value", testboard.getMotorEncoder());
+        testboard.printColorSensorValues();
         telemetry.update();
     }
 }

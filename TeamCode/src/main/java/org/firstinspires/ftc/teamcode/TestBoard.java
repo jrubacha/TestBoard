@@ -1,10 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
+import android.graphics.Color;
 import android.text.method.Touch;
 
 import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.AnalogSensor;
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.LED;
@@ -20,19 +22,21 @@ public class TestBoard {
     private TouchSensor myRevTouch, vexPushButton, limitSwitch;
     private LED flashlight;
     private AnalogInput pot;
+    private ColorSensor color;
     Telemetry telemetry;
     BotUtilities utilities = new BotUtilities(telemetry);
 
     public TestBoard(HardwareMap hardwareMap, Telemetry telemetry) {
         this.telemetry = telemetry;
-        myServo = hardwareMap.get(Servo.class, "myServo");
+        myServo = hardwareMap.get(Servo.class, "vexServo");
         myRevTouch = hardwareMap.get(TouchSensor.class, "revTouchButton");
-        flashlight = hardwareMap.get(LED.class, "flashlight");
-        vexPushButton = hardwareMap.get(TouchSensor.class, "vexPushButton");
+        //flashlight = hardwareMap.get(LED.class, "flashlight");
+        //vexPushButton = hardwareMap.get(TouchSensor.class, "vexPushButton");
         pot = hardwareMap.get(AnalogInput.class, "potentiometer");
         limitSwitch = hardwareMap.get(TouchSensor.class, "limitSwitch");
         myCRServo = hardwareMap.get(CRServo.class, "vexCRServo");
         myMotor = hardwareMap.get(DcMotor.class, "testBoardMotor");
+        color = hardwareMap.get(ColorSensor.class, "colorV3");
     }
 
     public void turnFlashlightOn(){
@@ -61,9 +65,9 @@ public class TestBoard {
     public boolean revTouchState(){
         return myRevTouch.isPressed();
     }
-    public boolean bumpSwitchState(){
-        return vexPushButton.isPressed();
-    }
+//    public boolean bumpSwitchState(){
+//        return vexPushButton.isPressed();
+//    }
     public boolean limitSwitchState() {
         return limitSwitch.isPressed();
     }
@@ -72,4 +76,15 @@ public class TestBoard {
     }
 
 
+    // Color Sensor
+    public void printColorSensorValues() {
+        telemetry.addData("Red", color.red());
+        telemetry.addData("Blue", color.blue());
+        telemetry.addData("Green", color.green());
+        telemetry.update();
+    }
+
+    public void setCRServoPower(double power) {
+        myCRServo.setPower(power);
+    }
 }

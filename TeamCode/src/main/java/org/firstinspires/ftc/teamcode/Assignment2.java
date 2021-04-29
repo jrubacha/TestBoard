@@ -98,7 +98,7 @@ public class Assignment2 extends OpMode {
         // TODO: For question #? remove the '\n' in the following code. What happens?
         telemetry.addLine("\n=== Sensors ===");
         telemetry.addData("Limit switch status", testboard.limitSwitchState());
-        telemetry.addData("Bump switch status", testboard.bumpSwitchState());
+        //telemetry.addData("Bump switch status", testboard.bumpSwitchState());
         telemetry.addData("Rev Touch status", testboard.revTouchState());
         telemetry.addData("Potentiometer Value", testboard.getPotValue());
         telemetry.addData("Encoder Value", testboard.getMotorEncoder());
