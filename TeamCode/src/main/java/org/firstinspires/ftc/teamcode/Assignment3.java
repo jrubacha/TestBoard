@@ -17,13 +17,13 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 //@Disabled
 //////////////////////////////////////////////////////////////////////////////////////////
 public class Assignment3 extends LinearOpMode {
-    TestBoard testboard;
+    Actuators actuators;
     Sensors sensors;
     private ElapsedTime runtime = new ElapsedTime();
 
     @Override
     public void runOpMode() {
-        testboard = new TestBoard(hardwareMap, telemetry);
+        actuators = new Actuators(hardwareMap, telemetry);
         sensors = new Sensors(hardwareMap, telemetry);
 
         telemetry.addLine("Test board initialized and ready");
@@ -42,7 +42,7 @@ public class Assignment3 extends LinearOpMode {
 
             // TODO: Add code to make the servo go to position 1
 
-            // TODO: Run a method to make both motors spin forward at a power of 1. (When you run this code, the single motor code above should be commented out. This method will be written in testboard
+            // TODO: Run a method to make both motors spin forward at a power of 1. (When you run this code, the single motor code above should be commented out. This method will be written in actuators
 
             updateTelemetry();
         }
@@ -56,9 +56,9 @@ public class Assignment3 extends LinearOpMode {
             motorPower = motorPower * -1;
             servoPosition = servoPosition * -1;
         }
-        testboard.setServoPosition(servoPosition);
-        testboard.setMotorPower(motorPower);
-        testboard.setCRServoPower(motorPower);
+        actuators.setServoPosition(servoPosition);
+        actuators.setMotorPower(motorPower);
+        actuators.setCRServoPower(motorPower);
     }
 
     private void updateTelemetry() {

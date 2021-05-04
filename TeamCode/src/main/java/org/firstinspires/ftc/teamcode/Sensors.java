@@ -49,6 +49,9 @@ public class Sensors {
     public void printPotReading(){
         telemetry.addData("Potentiometer", getPotReading());
     }
+    public double mapPotReading(){
+        return getPotReading() / 3.321;
+    }
 
     // Color Sensor
     public int[] getColorArray(){

@@ -14,14 +14,14 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-@TeleOp(name="Assignment 4", group="TestBoard")
+@TeleOp(name="Assignment 4", group="actuators")
 //@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
 //////////////////////////////////////////////////////////////////////////////////////////
 
 public class Assignment4 extends OpMode {
     private ElapsedTime runtime = new ElapsedTime();
     Sensors sensors;
-    TestBoard testboard;
+    Actuators actuators;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -30,7 +30,7 @@ public class Assignment4 extends OpMode {
     @Override
     public void init() {
         sensors = new Sensors(hardwareMap, telemetry);
-        testboard = new TestBoard(hardwareMap, telemetry);
+        actuators = new Actuators(hardwareMap, telemetry);
 
         // Set up our telemetry dashboard
         updateTelemetry(telemetry);
@@ -89,7 +89,7 @@ public class Assignment4 extends OpMode {
         // TODO: Complete the if-elseif-else statement below to control the servo position using the triangle and cross buttons. You will need to uncomment the code first
         // You can quickly comment/uncomment code by highlighting all of it and press CTRL+/ on your keyboard
 //        if (gamepad1.) {
-//            testboard.setServoPosition(1);
+//            actuators.setServoPosition(1);
 //        } else if () {
 //
 //        }

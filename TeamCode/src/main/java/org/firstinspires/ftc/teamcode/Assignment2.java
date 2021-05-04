@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-@TeleOp(name="Assignment 2", group="TestBoard")
+@TeleOp(name="Assignment 2", group="actuators")
 // TODO: For question #?, change the text inside the quotes above to something other than Assignment 1
 //@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -22,7 +22,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class Assignment2 extends OpMode {
     private ElapsedTime runtime = new ElapsedTime();
     Sensors sensors;
-    TestBoard testboard;
+    Actuators actuators;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -31,12 +31,12 @@ public class Assignment2 extends OpMode {
     public void init() {
         // Create our two objects needed for this assignment
         sensors = new Sensors(hardwareMap, telemetry);
-        testboard = new TestBoard(hardwareMap, telemetry);
+        actuators = new Actuators(hardwareMap, telemetry);
 
         // Tell the user that initialization is complete.
         // TODO: Uncomment line 43 when instructed
         //telemetry.addLine("Hello World!");
-        telemetry.addLine("Testboard is now ready to be used.");
+        telemetry.addLine("actuators is now ready to be used.");
         telemetry.update();
     }
 
@@ -87,9 +87,9 @@ public class Assignment2 extends OpMode {
             motorPower = motorPower * -1;
             servoPosition = servoPosition * -1;
         }
-        testboard.setServoPosition(servoPosition);
-        testboard.setMotorPower(motorPower);
-        testboard.setCRServoPower(motorPower);
+        actuators.setServoPosition(servoPosition);
+        actuators.setMotorPower(motorPower);
+        actuators.setCRServoPower(motorPower);
     }
     private void getTelemetry() {
         // Show the elapsed game time

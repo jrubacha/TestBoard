@@ -23,15 +23,17 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 //////////////////////////////////////////////////////////////////////////////////////////
 public class Assignment1b extends LinearOpMode {
     BotUtilities util;
-    TestBoard testboard;
+    Actuators actuators;
     Sensors sensors;
     private ElapsedTime runtime = new ElapsedTime();
 
     @Override
     public void runOpMode() {
         util = new BotUtilities(telemetry);
-        testboard = new TestBoard(hardwareMap, telemetry);
+        actuators = new Actuators(hardwareMap, telemetry);
         sensors = new Sensors(hardwareMap, telemetry);
+
+        actuators.setServoPosition(1);
 
         telemetry.addLine("Test board initialized and ready");
         telemetry.update();
@@ -41,11 +43,17 @@ public class Assignment1b extends LinearOpMode {
 
         // Motion has started
         runtime.reset();
+        actuators.setServoPosition(-1);
         while (opModeIsActive()) {
+            runEverything();
             callTelemetry();
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////
+    private void runEverything(){
+        actuators.setCRServoPower(-1);
+        actuators.setMotorPower(-1);
+    }
 
     private void callTelemetry() {
         // Show the elapsed game time
@@ -53,6 +61,7 @@ public class Assignment1b extends LinearOpMode {
 
         // Display Values of all the attached sensors
         sensors.printSensorTelemetry();
+        actuators.printMotorEncoderValue();
         telemetry.update();
     }
 }

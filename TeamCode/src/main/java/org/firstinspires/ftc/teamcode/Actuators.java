@@ -15,13 +15,13 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class TestBoard {
+public class Actuators {
     private Servo myServo;
     private CRServo myCRServo;
     private DcMotor myMotor;
     Telemetry telemetry;
 
-    public TestBoard(HardwareMap hardwareMap, Telemetry telemetry) {
+    public Actuators(HardwareMap hardwareMap, Telemetry telemetry) {
         this.telemetry = telemetry;
         myServo = hardwareMap.get(Servo.class, "vexServo");
         myCRServo = hardwareMap.get(CRServo.class, "vexCRServo");
@@ -39,6 +39,7 @@ public class TestBoard {
     public void printMotorEncoderValue(){
         telemetry.addData("Encoder", getMotorEncoder());
     }
+
 
 
     // Standard Servo

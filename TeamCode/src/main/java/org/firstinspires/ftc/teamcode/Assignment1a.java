@@ -20,14 +20,14 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 //////////////////////////////////////////////////////////////////////////////////////////
 public class Assignment1a extends LinearOpMode {
     BotUtilities util;
-    TestBoard testboard;
+    Actuators actuators;
     Sensors sensors;
     private ElapsedTime runtime = new ElapsedTime();
 
     @Override
     public void runOpMode() {
         util = new BotUtilities(telemetry);
-        testboard = new TestBoard(hardwareMap, telemetry);
+        actuators = new Actuators(hardwareMap, telemetry);
         sensors = new Sensors(hardwareMap, telemetry);
 
         telemetry.addLine("Test board initialized and ready");
@@ -50,6 +50,7 @@ public class Assignment1a extends LinearOpMode {
 
         // Display Values of all the attached sensors
         sensors.printSensorTelemetry();
+        actuators.printMotorEncoderValue();
         telemetry.update();
     }
 }
