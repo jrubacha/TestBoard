@@ -77,6 +77,5 @@ public class Sensors {
         printLimitSwitchState();
         printPotReading();
         printColorSensorValues();
-        telemetry.update();
     }
 }
