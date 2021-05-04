@@ -9,6 +9,7 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -16,7 +17,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 //////////////////////////////////////////////////////////////////////////////////////////
 @TeleOp(name="Assignment 2", group="actuators")
 // TODO: For question #?, change the text inside the quotes above to something other than Assignment 1
-//@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
+@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
 //////////////////////////////////////////////////////////////////////////////////////////
 
 public class Assignment2 extends OpMode {
@@ -33,9 +34,8 @@ public class Assignment2 extends OpMode {
         sensors = new Sensors(hardwareMap, telemetry);
         actuators = new Actuators(hardwareMap, telemetry);
 
+
         // Tell the user that initialization is complete.
-        // TODO: Uncomment line 43 when instructed
-        //telemetry.addLine("Hello World!");
         telemetry.addLine("actuators is now ready to be used.");
         telemetry.update();
     }

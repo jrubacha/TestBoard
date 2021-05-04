@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 //////////////////////////////////////////////////////////////////////////////////////////
 @Autonomous(name= "Assignment 3", group="Assignments")
-//@Disabled
+@Disabled
 //////////////////////////////////////////////////////////////////////////////////////////
 public class Assignment3 extends LinearOpMode {
     Actuators actuators;

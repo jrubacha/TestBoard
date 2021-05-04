@@ -63,12 +63,6 @@ public class Sensors {
         telemetry.addData("Green", color.green());
         telemetry.addData("Blue", color.blue());
     }
-    public void turnOnLED(){
-        color.enableLed(true);
-    }
-    public void turnOffLED(){
-        color.enableLed(false);
-    }
 
     // Sensor Telemetry
     public void printSensorTelemetry(){

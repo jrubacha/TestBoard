@@ -9,13 +9,14 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 @TeleOp(name="Assignment 4", group="actuators")
-//@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
+@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
 //////////////////////////////////////////////////////////////////////////////////////////
 
 public class Assignment4 extends OpMode {

@@ -18,19 +18,20 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 //@Disabled
 //////////////////////////////////////////////////////////////////////////////////////////
 public class Assignment1b extends LinearOpMode {
-    BotUtilities util;
     Actuators actuators;
     Sensors sensors;
     private ElapsedTime runtime = new ElapsedTime();
 
     @Override
     public void runOpMode() {
-        util = new BotUtilities(telemetry);
         actuators = new Actuators(hardwareMap, telemetry);
         sensors = new Sensors(hardwareMap, telemetry);
 
         actuators.setServoPosition(0);
 
+        // TODO: #1 Uncomment the line below when instructed
+        //telemetry.addLine("Hello World!");
+        // TODO: #2 Add a telemetry statement below this line with a custom message of your own
         telemetry.addLine("Test board initialized and ready");
         telemetry.update();
 
@@ -47,6 +48,7 @@ public class Assignment1b extends LinearOpMode {
     }
     //////////////////////////////////////////////////////////////////////////////////////////
     private void runEverything(){
+        // TODO: #3. Change the numerical values below as prompted
         actuators.setCRServoPower(-.5);
         actuators.setMotorPower(-.5);
     }
