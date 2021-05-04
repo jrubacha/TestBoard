@@ -1,10 +1,6 @@
 /** TODO: Read the following instructions
  *
- * There are no changes to be made within this code.
- *
- * Assignment 1 is observational only.
- *
- * Please do not make any changes to this program.
+ * Make changes as directed to by the Canvas guide.
  */
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +29,7 @@ public class Assignment1b extends LinearOpMode {
         actuators = new Actuators(hardwareMap, telemetry);
         sensors = new Sensors(hardwareMap, telemetry);
 
-        actuators.setServoPosition(1);
+        actuators.setServoPosition(0);
 
         telemetry.addLine("Test board initialized and ready");
         telemetry.update();
@@ -43,7 +39,7 @@ public class Assignment1b extends LinearOpMode {
 
         // Motion has started
         runtime.reset();
-        actuators.setServoPosition(-1);
+        actuators.setServoPosition(-.5);
         while (opModeIsActive()) {
             runEverything();
             callTelemetry();
@@ -51,8 +47,8 @@ public class Assignment1b extends LinearOpMode {
     }
     //////////////////////////////////////////////////////////////////////////////////////////
     private void runEverything(){
-        actuators.setCRServoPower(-1);
-        actuators.setMotorPower(-1);
+        actuators.setCRServoPower(-.5);
+        actuators.setMotorPower(-.5);
     }
 
     private void callTelemetry() {
@@ -61,7 +57,7 @@ public class Assignment1b extends LinearOpMode {
 
         // Display Values of all the attached sensors
         sensors.printSensorTelemetry();
-        actuators.printMotorEncoderValue();
+        actuators.printActuatorTelemetry();
         telemetry.update();
     }
 }

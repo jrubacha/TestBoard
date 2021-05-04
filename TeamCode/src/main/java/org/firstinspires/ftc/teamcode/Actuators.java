@@ -48,8 +48,16 @@ public class Actuators {
     }
 
 
+
     // Continuous Rotation Servo
     public void setCRServoPower(double power) {
         myCRServo.setPower(power);
+    }
+
+
+    // Actuator Telemetry
+    public void printActuatorTelemetry(){
+        telemetry.addLine("=== Actuators ===");
+        printMotorEncoderValue();
     }
 }

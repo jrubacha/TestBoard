@@ -50,7 +50,7 @@ public class Assignment1a extends LinearOpMode {
 
         // Display Values of all the attached sensors
         sensors.printSensorTelemetry();
-        actuators.printMotorEncoderValue();
+        actuators.printActuatorTelemetry();
         telemetry.update();
     }
 }
