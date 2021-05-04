@@ -14,6 +14,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 //////////////////////////////////////////////////////////////////////////////////////////
 @Autonomous(name= "Assignment 1b", group="Assignments")
 //@Disabled
@@ -21,12 +24,14 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class Assignment1b extends LinearOpMode {
     BotUtilities util;
     TestBoard testboard;
+    Sensors sensors;
     private ElapsedTime runtime = new ElapsedTime();
 
     @Override
     public void runOpMode() {
         util = new BotUtilities(telemetry);
         testboard = new TestBoard(hardwareMap, telemetry);
+        sensors = new Sensors(hardwareMap, telemetry);
 
         telemetry.addLine("Test board initialized and ready");
         telemetry.update();
@@ -47,12 +52,7 @@ public class Assignment1b extends LinearOpMode {
         telemetry.addData("Run Time: ", runtime.toString());
 
         // Display Values of all the attached sensors
-        telemetry.addLine("\n=== Sensors ===");
-        telemetry.addData("Limit switch status", testboard.limitSwitchState());
-        telemetry.addData("Rev Touch status", testboard.revTouchState());
-        telemetry.addData("Potentiometer Value", testboard.getPotValue());
-        telemetry.addData("Encoder Value", testboard.getMotorEncoder());
-        testboard.printColorSensorValues();
+        sensors.printSensorTelemetry();
         telemetry.update();
     }
 }

@@ -20,7 +20,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class Assignment4 extends OpMode {
     private ElapsedTime runtime = new ElapsedTime();
-    BotUtilities utilities;
+    Sensors sensors;
     TestBoard testboard;
 
 
@@ -29,8 +29,8 @@ public class Assignment4 extends OpMode {
     /* Code to run ONCE when the driver hits INIT */
     @Override
     public void init() {
-        utilities = new BotUtilities(this.telemetry);
-        testboard = new TestBoard(this.hardwareMap, this.telemetry);
+        sensors = new Sensors(hardwareMap, telemetry);
+        testboard = new TestBoard(hardwareMap, telemetry);
 
         // Set up our telemetry dashboard
         updateTelemetry(telemetry);
@@ -60,9 +60,6 @@ public class Assignment4 extends OpMode {
     /* Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP */
     @Override
     public void loop() {
-        //checkDriverController();
-        testboard.turnFlashlightOn();
-        telemetry.addData("Pot value: ", testboard.getPotValue());
 
         // Call Telemetry
         updateTelemetry(telemetry);

@@ -21,7 +21,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class Assignment2 extends OpMode {
     private ElapsedTime runtime = new ElapsedTime();
-    BotUtilities utilities;
+    Sensors sensors;
     TestBoard testboard;
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -30,8 +30,8 @@ public class Assignment2 extends OpMode {
     @Override
     public void init() {
         // Create our two objects needed for this assignment
-        utilities = new BotUtilities(this.telemetry);
-        testboard = new TestBoard(this.hardwareMap, this.telemetry);
+        sensors = new Sensors(hardwareMap, telemetry);
+        testboard = new TestBoard(hardwareMap, telemetry);
 
         // Tell the user that initialization is complete.
         // TODO: Uncomment line 43 when instructed
@@ -81,29 +81,35 @@ public class Assignment2 extends OpMode {
 //////////////////////////////////////////////////////////////////////////////////////////
 
     private void runEverything(){
+        double motorPower = 0.25, servoPosition = 1;
         int roundedRunTime = (int) runtime.seconds();
-        if (roundedRunTime % 5 == 0 || roundedRunTime % 4 == 0) {
-            testboard.setServoPosition(-1);
-            testboard.setMotorPower(-1);
-        } else {
-            testboard.setServoPosition(1);
-            testboard.setMotorPower(1);
+        if (roundedRunTime % 5 == 0) {
+            motorPower = motorPower * -1;
+            servoPosition = servoPosition * -1;
         }
+        testboard.setServoPosition(servoPosition);
+        testboard.setMotorPower(motorPower);
+        testboard.setCRServoPower(motorPower);
     }
     private void getTelemetry() {
         // Show the elapsed game time
         telemetry.addData("Run Time: ", runtime.toString());
 
         // Display Values of all the attached sensors
+        // TODO: Fix the following TODO
         // TODO: For question #? remove the '\n' in the following code. What happens?
-        telemetry.addLine("\n=== Sensors ===");
-        telemetry.addData("Limit switch status", testboard.limitSwitchState());
-        //telemetry.addData("Bump switch status", testboard.bumpSwitchState());
-        telemetry.addData("Rev Touch status", testboard.revTouchState());
-        telemetry.addData("Potentiometer Value", testboard.getPotValue());
-        telemetry.addData("Encoder Value", testboard.getMotorEncoder());
+        sensors.printSensorTelemetry();
         telemetry.update();
     }  // getTelemetry
+
+
+    public void delay(int milli) {
+        try {
+            Thread.sleep(milli);
+        } catch (InterruptedException e) {
+
+        }
+    }
 
 }
 

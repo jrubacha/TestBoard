@@ -12,13 +12,6 @@ public class BotUtilities {
         this.telemetry = telemetry;
     }
 
-    public int getEncoderValue(DcMotor motor) {
-        return motor.getCurrentPosition();
-    }
-
-    public void printEncoder(DcMotor motor) {
-        telemetry.addData(String.valueOf(motor), motor.getCurrentPosition());
-    }
 
     public void delay(int time) {
         try {

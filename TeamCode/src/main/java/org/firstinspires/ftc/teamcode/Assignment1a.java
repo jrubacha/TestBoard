@@ -21,12 +21,14 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class Assignment1a extends LinearOpMode {
     BotUtilities util;
     TestBoard testboard;
+    Sensors sensors;
     private ElapsedTime runtime = new ElapsedTime();
 
     @Override
     public void runOpMode() {
         util = new BotUtilities(telemetry);
         testboard = new TestBoard(hardwareMap, telemetry);
+        sensors = new Sensors(hardwareMap, telemetry);
 
         telemetry.addLine("Test board initialized and ready");
         telemetry.update();
@@ -37,35 +39,17 @@ public class Assignment1a extends LinearOpMode {
         // Motion has started
         runtime.reset();
         while (opModeIsActive()) {
-            //runEverything();
             callTelemetry();
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////
-    private void runEverything(){
-        double motorPower = 0.25, servoPosition = 1;
-        int roundedRunTime = (int) runtime.seconds();
-        if (roundedRunTime % 5 == 0) {
-            motorPower = motorPower * -1;
-            servoPosition = servoPosition * -1;
-        }
-        testboard.setServoPosition(servoPosition);
-        testboard.setMotorPower(motorPower);
-        testboard.setCRServoPower(motorPower);
-    }
 
     private void callTelemetry() {
         // Show the elapsed game time
         telemetry.addData("Run Time: ", runtime.toString());
 
         // Display Values of all the attached sensors
-        telemetry.addLine("\n=== Sensors ===");
-        telemetry.addData("Limit switch status", testboard.limitSwitchState());
-        //telemetry.addData("Bump switch status", testboard.bumpSwitchState());
-        telemetry.addData("Rev Touch status", testboard.revTouchState());
-        telemetry.addData("Potentiometer Value", testboard.getPotValue());
-        telemetry.addData("Encoder Value", testboard.getMotorEncoder());
-        testboard.printColorSensorValues();
+        sensors.printSensorTelemetry();
         telemetry.update();
     }
 }
