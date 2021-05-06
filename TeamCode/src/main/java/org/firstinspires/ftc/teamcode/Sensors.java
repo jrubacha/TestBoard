@@ -20,7 +20,7 @@ public class Sensors {
     // Constructor
     public Sensors(HardwareMap hardwareMap, Telemetry telemetry) {
         this.telemetry = telemetry;
-        pushButton = hardwareMap.get(TouchSensor.class, "revTouchButton");
+        pushButton = hardwareMap.get(TouchSensor.class, "pushButton");
         pot = hardwareMap.get(AnalogInput.class, "potentiometer");
         limitSwitch = hardwareMap.get(TouchSensor.class, "limitSwitch");
         color = hardwareMap.get(ColorSensor.class, "colorV3");

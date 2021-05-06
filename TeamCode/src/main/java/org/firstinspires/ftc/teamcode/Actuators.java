@@ -23,7 +23,7 @@ public class Actuators {
 
     public Actuators(HardwareMap hardwareMap, Telemetry telemetry) {
         this.telemetry = telemetry;
-        myServo = hardwareMap.get(Servo.class, "vexServo");
+        myServo = hardwareMap.get(Servo.class, "myServo");
         myCRServo = hardwareMap.get(CRServo.class, "vexCRServo");
         myMotor = hardwareMap.get(DcMotor.class, "testBoardMotor");
     }
