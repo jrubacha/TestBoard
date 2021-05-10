@@ -2,8 +2,6 @@
  *
  * Follow along with the assignment on Canvas to use this OpMode
  *
- * You will be running the program and making small changes to the values used in the program. You will not need to write any new code for this assignment.
- *
  * Except where specified, do NOT make any changes to the program.
  */
 
@@ -16,7 +14,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 @TeleOp(name="Assignment 2", group="actuators")
-// TODO: For question #?, change the text inside the quotes above to something other than Assignment 1
+
 @Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -81,35 +79,33 @@ public class Assignment2 extends OpMode {
 //////////////////////////////////////////////////////////////////////////////////////////
 
     private void runEverything(){
-        double motorPower = 0.25, servoPosition = 1;
-        int roundedRunTime = (int) runtime.seconds();
-        if (roundedRunTime % 5 == 0) {
-            motorPower = motorPower * -1;
-            servoPosition = servoPosition * -1;
-        }
-        actuators.setServoPosition(servoPosition);
+        double motorPower = 0.75;
+        // TODO: #2 Create a variable named restingServoPosition and set it equal to 0.5
+
+        // TODO: #3 Create a variable named targetServoPosition and set it equal to -0.25
+
+
         actuators.setMotorPower(motorPower);
-        actuators.setCRServoPower(motorPower);
+
+        // TODO: #4 Utilize an if-else statement to control the servo using the pushbutton
+
     }
+
+
     private void getTelemetry() {
         // Show the elapsed game time
         telemetry.addData("Run Time: ", runtime.toString());
 
+        // Use sensor data to add / remove a message
+        // TODO: #1 Create an if-else statement to display a custom message when the limit switch is pushed
+
+
         // Display Values of all the attached sensors
-        // TODO: Fix the following TODO
-        // TODO: For question #? remove the '\n' in the following code. What happens?
         sensors.printSensorTelemetry();
         telemetry.update();
     }  // getTelemetry
 
 
-    public void delay(int milli) {
-        try {
-            Thread.sleep(milli);
-        } catch (InterruptedException e) {
-
-        }
-    }
 
 }
 
