@@ -61,9 +61,9 @@ public class Assignment3 extends OpMode {
     /* Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP */
     @Override
     public void loop() {
-
+        checkDriverController();
         // Call Telemetry
-        updateTelemetry(telemetry);
+        telemetry.update();
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -84,7 +84,7 @@ public class Assignment3 extends OpMode {
             telemetry.addLine("Square pushed");
         }
 
-        // TODO: Use an if statement to add telemetry statement for the gamepad to show only when the triangle is pushed
+        // TODO: Use an if statement to add telemetry statement for the gamepad to show when the triangle is pushed
 
 
         // TODO: Complete the if-elseif-else statement below to control the servo position using the triangle and cross buttons. You will need to uncomment the code first
