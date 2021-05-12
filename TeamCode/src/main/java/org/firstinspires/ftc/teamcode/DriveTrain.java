@@ -16,7 +16,7 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class DriveTrain {
-    // TODO: Create each of your motors/servos for your DRIVETRAIN as appropriate
+    // TODO: Create each of your motors/servos in your DRIVETRAIN as appropriate
 
     // If you are using motors for your drive train you will create each one similar to this:
     // private DcMotor leftMotor;
@@ -34,7 +34,7 @@ public class DriveTrain {
         // If you are using motors:
         // leftMotor = hardwareMap.get(DcMotor.class, "leftMotor");
 
-        // If you are using CR Servos
+        // If you are using CR Servos:
         // backLeft = hardwareMap.get(CRServo.class, "backLeft");
 
     }
@@ -57,7 +57,7 @@ public class DriveTrain {
         //frontLeft.setPower(leftPow);
     }
 
-    // TODO: Fix stop DRIVING to match YOUR drive style
+    // TODO: Create stop DRIVING to match YOUR drive style
     public void stopDriving(){
         // Use your set___Power method with input values of zero
     }
