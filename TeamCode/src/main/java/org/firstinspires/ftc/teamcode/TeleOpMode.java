@@ -1,10 +1,6 @@
 // TODO: Read the following instructions
 /**
- * The purpose of this assignment is to introduce you to using input in order to control functions.
- *
- * You will learn about logic statements and the gamepad.
- *
- * Except where prompted, do not make changes to the program.
+ * Fill out the controller sections of this code for how you want the human to control the robot
  */
 //////////////////////////////////////////////////////////////////////////////////////////
 package org.firstinspires.ftc.teamcode;

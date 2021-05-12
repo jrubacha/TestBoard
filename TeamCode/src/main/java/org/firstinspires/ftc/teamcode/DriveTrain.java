@@ -52,8 +52,14 @@ public class DriveTrain {
     // Continuous Rotation Servo Drivetrain
     public void setCRServoPower(double leftPow, double rightPow) {
         // Example for setting power, each servo will need one of these
-        //myCRServo.setPower(leftPow);
+        // Left should share the left variable, right shares the right variable
+        //backLeft.setPower(leftPow);
+        //frontLeft.setPower(leftPow);
+    }
 
+    // TODO: Fix stop DRIVING to match YOUR drive style
+    public void stopDriving(){
+        // Use your set___Power method with input values of zero
     }
 
 }

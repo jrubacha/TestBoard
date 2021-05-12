@@ -1,11 +1,4 @@
-/** TODO: Read the following instructions
- *
- * There are no changes to be made within this code.
- *
- * Assignment 1 is observational only.
- *
- * Please do not make any changes to this program.
- */
+// TODO: Write program to control the robot during the 30 second autonomous period.
 
 //////////////////////////////////////////////////////////////////////////////////////////
 package org.firstinspires.ftc.teamcode;
@@ -40,6 +33,17 @@ public class AutonomousMode extends LinearOpMode {
         runtime.reset();
         while (opModeIsActive()) {
             // TODO: Write your autonomous code in this section here
+            /** Use the methods found in drivetrain and mechanisms to control your robot
+             * Time delay can be achieved by:
+             *      delay(1000);
+             * The number is measured in MILLISECONDS
+             *
+             * Example code below will drive the robot forward for one second
+             */
+//            drivetrain.setDrivePower(1, 1);
+//            delay(1000);
+//            drivetrain.stopDriving();
+
 
 
             callTelemetry();
@@ -50,5 +54,14 @@ public class AutonomousMode extends LinearOpMode {
     private void callTelemetry() {
         telemetry.addData("Run Time: ", runtime.toString());
         telemetry.update();
+    }
+
+    // Delays robot actions, measured in milliseconds
+    private void delay(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            // no-op
+        }
     }
 }

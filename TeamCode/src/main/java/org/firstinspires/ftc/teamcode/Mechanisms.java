@@ -28,7 +28,7 @@ public class Mechanisms {
     // private CRServo armServo;
 
     // For standard servos:
-     private Servo clawServo;
+    // private Servo clawServo;
 
     // Do not edit
     Telemetry telemetry;
@@ -47,7 +47,7 @@ public class Mechanisms {
         // backLeft = hardwareMap.get(CRServo.class, "backLeft");
 
         // If you are using standard servos:
-         clawServo = hardwareMap.get(Servo.class, "clawServo");
+        // clawServo = hardwareMap.get(Servo.class, "clawServo");
 
     }
 
