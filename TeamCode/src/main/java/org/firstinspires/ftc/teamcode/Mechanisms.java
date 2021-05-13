@@ -15,6 +15,8 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
+
 public class Mechanisms {
     // TODO: Create each of your motors/servos for your things NOT in your drivetrain as appropriate
     /** Below, there are examples of how to initialize each actuator type
@@ -48,6 +50,9 @@ public class Mechanisms {
 
         // If you are using standard servos:
         // clawServo = hardwareMap.get(Servo.class, "clawServo");
+
+        // Set motor/servo directions
+        // armMotor.setDirection(REVERSE);
 
     }
 
