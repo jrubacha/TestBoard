@@ -23,42 +23,43 @@ public class Mechanisms {
      *  Each needs a unique name, that should also relate to what it does/is
      */
 
-    // For dc motors:
+    // For every Motor:
     // private DcMotor armMotor;
 
-    // For continuous rotation servos:
+    // For every Continuous Rotation Servo:
     // private CRServo armServo;
 
-    // For standard servos:
+    // For every Standard Servo:
     // private Servo clawServo;
 
-    // Do not edit
-    Telemetry telemetry;
+
+    Telemetry telemetry; // Do not edit
 
     public Mechanisms(HardwareMap hardwareMap, Telemetry telemetry) {
         this.telemetry = telemetry;
         // TODO: Finish the hardware map for your mechanisms
-        /** Finishing the hardware map:
-         *  The first word should be the same as the name you used above
-         *  The word in quotes should be the same as the name you used in configure robot setting on the phone
+        /** Setting up the hardware map.
+         *  - Remember that every item typed in the quotes, be it a motor/servo, must match EXACTLY what you type in on the phone while configuring the robot
+         *  - This does not have to match the variable used here
+         *  - The name, in either location, should be clear and descriptive
+         *  - You will need one line of hardwareMap for attached actuator
          */
-        // If you are using motors:
+        // Motor Example:
         // leftMotor = hardwareMap.get(DcMotor.class, "leftMotor");
 
-        // If you are using CR Servos:
+        // CR Servo Example:
         // backLeft = hardwareMap.get(CRServo.class, "backLeft");
 
-        // If you are using standard servos:
+        // Standard Servo Example:
         // clawServo = hardwareMap.get(Servo.class, "clawServo");
 
-        // Set motor/servo directions
+        // TODO: Set motor/servo directions. They will default to FORWARD, use this to change items to REVERSE as needed
         // armMotor.setDirection(REVERSE);
 
     }
 
 
     //TODO: Create methods to do the things you need.
-
     /** The number of methods down here will depend on the number of extra motors/servos you used on your robot
      *  Each method should follow the same form, if you have a question, ASK!!!
      *  There are many different ways this section will need to be done depending on what YOU are doing with YOUR robot

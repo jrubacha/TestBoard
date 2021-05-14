@@ -22,30 +22,36 @@ import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 public class DriveTrain {
     // TODO: Create each of your motors/servos in your DRIVETRAIN as appropriate
 
-    // If you are using motors for your drive train you will create each one similar to this:
+    // For every Motor:
     // private DcMotor leftMotor;
 
-    // If you are using continuous rotation servos for your drive train you will create each one similar to this:
+    // For every Continuous Rotation Servo:
     // private CRServo backLeft;
 
-    // Do not edit
-    Telemetry telemetry;
+
+    Telemetry telemetry; // Do not edit
 
     public DriveTrain(HardwareMap hardwareMap, Telemetry telemetry) {
         this.telemetry = telemetry;
         // TODO: Finish the hardware map for your drivetrain
+        /** Setting up the hardware map.
+         *  - Remember that every item typed in the quotes, be it a motor/servo, must match EXACTLY what you type in on the phone while configuring the robot
+         *  - This does not have to match the variable used here
+         *  - The name, in either location, should be clear and descriptive
+         *  - You will need one line of hardwareMap for attached actuator
+         */
 
-        // Example if you are using motors:
+        // Motor Example:
         // leftMotor = hardwareMap.get(DcMotor.class, "leftMotor");
 
-        // Example if you are using CR Servos:
+        // CR Servo Example:
         // backLeft = hardwareMap.get(CRServo.class, "backLeft");
 
-        // TODO: Set motor/servo directions. They will default to FORWARD, use this to change items to REVERSE
+        // TODO: Set motor/servo directions. They will default to FORWARD, use this to change items to REVERSE as needed
         // armMotor.setDirection(REVERSE);
 
-        // TODO: Choose your Zero Power Behavior
-        // Brake: Motor/servo will use current to stop the momentum
+        // TODO: Choose your Zero Power Behavior. They will default to COAST, use this to change items to BRAKE as needed
+        // Brake: Motor/servo will use current to stop the momentum quickly
         // Coast: Motor/servo will stop providing current, but allow momentum to continue
         // Example:
         // leftMotor.setZeroPowerBehavior(BRAKE);
@@ -53,6 +59,10 @@ public class DriveTrain {
 
 
     //TODO: Set power for your motors. Use the APPROPRIATE method for your drivetrain
+    /** Regardless of the drive type, you will need to add code inside one of the following methods
+     *  You will use the variables leftPow and rightPow within to control the actuators
+     *  Follow the examples provided
+     */
 
     // Motor-based DriveTrain
     public void setDrivePower(double leftPow, double rightPow) {
@@ -68,6 +78,10 @@ public class DriveTrain {
     }
 
     // TODO: Create stop DRIVING to match YOUR drive style
+    /** Stopping is important.
+     *  This is done by setting power to the motors/servos to zero.
+     *  You will call the method you created above when you write the stopDriving method
+     */
     public void stopDriving(){
         // Use your set___Power method with input values of zero
 
