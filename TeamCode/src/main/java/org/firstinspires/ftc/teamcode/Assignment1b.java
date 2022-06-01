@@ -31,6 +31,7 @@ public class Assignment1b extends LinearOpMode {
 
         // TODO: #1 Uncomment the line below when instructed
         //telemetry.addLine("Hello World!");
+
         // TODO: #2 Add a telemetry statement below this line with a custom message of your own
         telemetry.addLine("Test board initialized and ready");
         telemetry.update();
@@ -40,17 +41,18 @@ public class Assignment1b extends LinearOpMode {
 
         // Motion has started
         runtime.reset();
-        actuators.setServoPosition(-.5);
+
         while (opModeIsActive()) {
             runEverything();
             callTelemetry();
         }
+
     }
     //////////////////////////////////////////////////////////////////////////////////////////
     private void runEverything(){
         // TODO: #3. Change the numerical values below as prompted
         actuators.setCRServoPower(-.5);
-        actuators.setMotorPower(-.5);
+        actuators.setMotorPower(.5);
     }
 
     private void callTelemetry() {
