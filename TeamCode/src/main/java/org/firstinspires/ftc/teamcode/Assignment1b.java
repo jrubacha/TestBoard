@@ -2,7 +2,6 @@
  *
  * Make changes as directed to by the Canvas guide.
  */
-
 //////////////////////////////////////////////////////////////////////////////////////////
 package org.firstinspires.ftc.teamcode;
 
@@ -51,8 +50,8 @@ public class Assignment1b extends LinearOpMode {
     //////////////////////////////////////////////////////////////////////////////////////////
     private void runEverything(){
         // TODO: #3. Change the numerical values below as prompted
-        actuators.setCRServoPower(-.5);
-        actuators.setMotorPower(.5);
+        actuators.setCRServoPower(0.5);
+        actuators.setMotorPower(0.5);
     }
 
     private void callTelemetry() {

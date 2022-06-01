@@ -24,10 +24,12 @@ public class Actuators {
     private DcMotor myMotor;
     Constants constants;
     Telemetry telemetry;
+    Utilities util;
 
     public Actuators(HardwareMap hardwareMap, Telemetry telemetry) {
         this.telemetry = telemetry;
         constants = new Constants();
+        util = new Utilities();
         myServo = hardwareMap.get(Servo.class, "myServo");
         myCRServo = hardwareMap.get(CRServo.class, "myCRServo");
         myMotor = hardwareMap.get(DcMotor.class, "testBoardMotor");
@@ -47,48 +49,6 @@ public class Actuators {
     }
 
 
-
-    // Motor Modes
-    public void setMotorToEncoderMode(){
-        myMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-    }
-    public void setMotorToBlankMode(){
-        myMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-    }
-
-    // must be called AFTER setting a target position
-    public void setMotorToPositionMode(){
-        myMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-    }
-    public void setMotorTarget(int target){
-        myMotor.setTargetPosition(target);
-    }
-    public void resetEncoders(){
-        myMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-    }
-    public void printCurrentMotorMode(){
-        telemetry.addData("Motor Mode", myMotor.getMode());
-    }
-    public boolean isMotorBusy(){
-        return myMotor.isBusy();
-    }
-
-    public void driveToDistance (double inches){
-        myMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        int target = (int)(inches / .046);
-        myMotor.setTargetPosition (target); //This converts inches back into pulses. 1 pulse covers about .046 inches of distance.
-        setMotorPower(.35);
-        myMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        while (myMotor.isBusy())
-        {
-            telemetry.addData("Current Encoder Position", myMotor.getCurrentPosition() );
-            telemetry.addData("Target is", target);
-            telemetry.update();
-        }
-        setMotorPower(0);
-    }
-
     // Standard Servo
     public void setServoPosition(double pos) {
         myServo.setPosition(pos);
@@ -98,7 +58,10 @@ public class Actuators {
 
     // Continuous Rotation Servo
     public void setCRServoPower(double power) {
-        myCRServo.setPower(power);
+        myCRServo.setPower(mapVexServo(power));
+    }
+    private double mapVexServo(double power){
+        return util.map(power, -1.0, 1.0, constants.VEX_393_LOWER_BOUND, constants.VEX_393_UPPER_BOUND);
     }
 
 
