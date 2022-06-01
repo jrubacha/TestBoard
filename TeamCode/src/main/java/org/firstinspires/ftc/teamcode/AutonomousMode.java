@@ -31,23 +31,21 @@ public class AutonomousMode extends LinearOpMode {
 
 //////////////////////////////////////////////////////////////////////////////////////////
         runtime.reset();
-        while (opModeIsActive()) {
-            // TODO: Write your autonomous code in this section here
-            /** Use the methods found in drivetrain and mechanisms to control your robot
-             * Time delay can be achieved by:
-             *      delay(1000);
-             * The number is measured in MILLISECONDS
-             *
-             * Example code below will drive the robot forward for one second
-             */
-//            drivetrain.setDrivePower(1, 1);
-//            delay(1000);
-//            drivetrain.stopDriving();
+        // TODO: Write your autonomous code in this section here
+        /** Use the methods found in drivetrain and mechanisms to control your robot
+         * Time delay can be achieved by:
+         *      delay(1000);
+         * The number is measured in MILLISECONDS
+         *
+         * Example code below will drive the robot forward for one second
+         */
+//        drivetrain.setDrivePower(1, 1);
+//        delay(1000);
+//        drivetrain.stopDriving();
 
 
 
-            callTelemetry();
-        }
+        callTelemetry();
     }
     //////////////////////////////////////////////////////////////////////////////////////////
 
