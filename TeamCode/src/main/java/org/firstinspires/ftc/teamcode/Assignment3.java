@@ -16,7 +16,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 @TeleOp(name="Assignment 3", group="actuators")
-//@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
+@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
 //////////////////////////////////////////////////////////////////////////////////////////
 
 public class Assignment3 extends OpMode {
