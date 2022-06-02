@@ -50,8 +50,12 @@ public class Assignment1b extends LinearOpMode {
     //////////////////////////////////////////////////////////////////////////////////////////
     private void runEverything(){
         // TODO: #3. Change the numerical values below as prompted
+        // value ranges -1 - 1
         actuators.setCRServoPower(0.5);
         actuators.setMotorPower(0.5);
+
+        // value ranges 0 - 1
+        actuators.setServoPosition(-1);
     }
 
     private void callTelemetry() {
