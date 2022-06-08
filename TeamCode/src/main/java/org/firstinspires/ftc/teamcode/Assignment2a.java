@@ -1,12 +1,3 @@
-/** TODO: Read the following instructions
- *
- * There are no changes to be made within this code.
- *
- * Assignment 1 is observational only.
- *
- * Please do not make any changes to this program.
- */
-
 //////////////////////////////////////////////////////////////////////////////////////////
 package org.firstinspires.ftc.teamcode;
 
