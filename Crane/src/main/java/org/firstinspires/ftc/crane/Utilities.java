@@ -14,7 +14,7 @@ public class Utilities {
      * @param in_min   - the min value of the range that the value is in
      * @param in_max   - the max value of the range that the value is in
      * @param out_min  - the min value of the range you want the value to be in
-     * @param out_max  - the max value of teh range you want the value to be in
+     * @param out_max  - the max value of the range you want the value to be in
      * @return
      */
     private double map(double value, double in_min, double in_max, double out_min, double out_max) {
