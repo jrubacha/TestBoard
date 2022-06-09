@@ -17,5 +17,10 @@ public class Constants {
     public final double TURN_SPEED = 0.75;
     public final double DRIVE_SPEED = 0.9;
 
+    // Intake Constants
+    public final double INTAKE = 0.8;
+    public final double OUTTAKE = -0.8;
+    public final double RAISE = 0.9;
+    public final double LOWER = -0.9;
 
 }
