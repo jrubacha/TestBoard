@@ -23,4 +23,10 @@ public class Constants {
     public final double RAISE = 0.9;
     public final double LOWER = -0.9;
 
+
+    // Turret Constants
+    public final int LEFT_LIMIT = 0;
+    public final int RIGHT_LIMIT = 30000; // number pulled out of booty
+    public final double AUTON_TURRET_SPEED = 0.8;
+    public final double HUMAN_TURRET_SPEED = 0.5;
 }
