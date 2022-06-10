@@ -31,7 +31,10 @@ public class Utilities {
     }
 
 
-    // Millisecond delay
+    /**
+     * Time delay. Mostly for use with autonomous modes
+     * @param time - delay time in milliseconds
+     */
     public void delay(int time) {
         try {
             Thread.sleep(time);

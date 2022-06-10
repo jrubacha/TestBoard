@@ -12,10 +12,23 @@ public class Intake {
      * The deploying motors are 2 bosch seat motors, electrically tied together
      * This deploying motors really should have encoder control and/or limit switches at the outer bounds
      */
-    CRServo deploymentMotor, intakeMotor;
-    TouchSensor upLimitSwitch, downLimitSwitch;
+    private CRServo deploymentMotor, intakeMotor;
+    private TouchSensor upLimitSwitch, downLimitSwitch;
     Telemetry telemetry;
     Constants constants;
+    private intakePositionStates currentPosition;
+    private intakeStates currentState;
+
+    public enum intakeStates{
+        INTAKING, // collecting balls from ground
+        OUTTAKING, // spitting balls out OR feeding in when arm is up
+        OFF;
+    }
+    public enum intakePositionStates{
+        UP,
+        DOWN,
+        OFF; // initial status for when robot is turned on
+    }
 
     public Intake(HardwareMap hardwareMap, Telemetry telemetry) {
         deploymentMotor = hardwareMap.get(CRServo.class, "deploymentMotor");
@@ -24,7 +37,74 @@ public class Intake {
         downLimitSwitch = hardwareMap.get(TouchSensor.class, "intakeDownSwitch");
         this.telemetry = telemetry;
         constants = new Constants();
+        currentPosition = intakePositionStates.OFF;
+        currentState = intakeStates.OFF;
+        // TODO: brake mode
+    }
+
+    public void setIntakePositionState(intakePositionStates newState){
+        currentPosition = newState;
+        switch (currentPosition) {
+            case OFF:
+                setIntakeArmPower(0);
+                break;
+            case UP:
+                retractIntake();
+                break;
+            case DOWN:
+                deployIntake();
+                break;
+        }
+    }
+
+    public void setIntakeState(intakeStates newState){
+        currentState = newState;
+        switch (currentState) {
+            case OFF:
+                stopIntaking();
+                break;
+            case INTAKING:
+                intake();
+                break;
+            case OUTTAKING:
+                outtake();
+                break;
+        }
     }
 
 
+
+    public void deployIntake(){
+        if(!downLimitSwitch.isPressed()) {
+            setIntakeArmPower(constants.LOWER);
+        } else {
+            setIntakeArmPower(0); // do not run arm when all the way down
+        }
+    }
+
+    public void retractIntake(){
+        if(!upLimitSwitch.isPressed()) {
+            setIntakeArmPower(constants.RAISE);
+        } else {
+            setIntakeArmPower(0);
+        }
+    }
+
+    public void intake(){
+        intakeMotor.setPower(constants.INTAKE);
+    }
+    public void outtake(){
+        intakeMotor.setPower(constants.OUTTAKE);
+    }
+    public void stopIntaking(){
+        intakeMotor.setPower(0);
+    }
+
+    public intakePositionStates getIntakeState(){
+        return currentPosition;
+    }
+
+    public void setIntakeArmPower(double power) {
+        deploymentMotor.setPower(power);
+    }
 }
