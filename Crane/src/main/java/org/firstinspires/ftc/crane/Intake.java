@@ -72,8 +72,6 @@ public class Intake {
         }
     }
 
-
-
     public void deployIntake(){
         if(!downLimitSwitch.isPressed()) {
             setIntakeArmPower(constants.LOWER);
@@ -100,8 +98,17 @@ public class Intake {
         intakeMotor.setPower(0);
     }
 
-    public intakePositionStates getIntakeState(){
+    public intakePositionStates getIntakePositionState(){
         return currentPosition;
+    }
+    public intakeStates getIntakeState(){
+        return currentState;
+    }
+    public void printCurrentStatus(){
+        telemetry.addData("Current Position State", getIntakePositionState())
+                .addData("Top Limit Switch State", upLimitSwitch.isPressed())
+                .addData("Bottom Limit Switch State", downLimitSwitch.isPressed())
+                .addData("Current Intaking State", getIntakeState());
     }
 
     public void setIntakeArmPower(double power) {
