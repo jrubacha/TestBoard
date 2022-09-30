@@ -8,8 +8,8 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Intake {
     /**
-     * The intaking motor is 1 bag motor, with a ? : 1 reduction VP
-     * The deploying motors are 2 bosch seat motors, electrically tied together
+     * The intaking motor is 1 bag motor, with a ? : 1 reduction VP and a ? : 1 gear train reduction
+     * The deploying motors are 2 bosch seat motors, electrically tied together and run off a single motor controller
      * This deploying motors really should have encoder control and/or limit switches at the outer bounds
      */
     private CRServo deploymentMotor, intakeMotor;
