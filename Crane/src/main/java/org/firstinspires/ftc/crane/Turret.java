@@ -15,6 +15,7 @@ public class Turret {
 
     private DcMotor turretMotor;
     private TouchSensor limitSwitch;
+    private turretPosition currentPosition;
     Constants constants;
     Telemetry telemetry;
 
@@ -22,6 +23,21 @@ public class Turret {
         LEFT,
         RIGHT,
         ROVING
+    }
+
+    public void setTurretState(turretPosition newState){
+        currentPosition = newState;
+        switch (currentPosition) {
+            case LEFT:
+                snapToLeft();
+                break;
+            case RIGHT:
+                snapToRight();
+                break;
+            case ROVING:
+                // TODO: create roving method and call it here
+                break;
+        }
     }
 
     public Turret(HardwareMap hardwareMap, Telemetry telemetry){
