@@ -1,10 +1,14 @@
 package org.firstinspires.ftc.crane;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 public class Utilities {
     Constants constants;
+    Telemetry telemetry;
 
-    public Utilities(){
+    public Utilities(Telemetry telemetry){
         constants = new Constants();
+        this.telemetry = telemetry;
     }
 
     /**
@@ -27,7 +31,12 @@ public class Utilities {
      * @return
      */
     public double mapVictorSPX(double value) {
-        return map(value, -1, 1, constants.VICTOR_SPX_LOWER_BOUND, constants.VICTOR_SPX_UPPER_BOUND);
+        try {
+            return map(value, -1, 1, constants.VICTOR_SPX_LOWER_BOUND, constants.VICTOR_SPX_UPPER_BOUND);
+        } catch (NullPointerException e) {
+            telemetry.addData("Exception", e);
+            return 0;
+        }
     }
 
 

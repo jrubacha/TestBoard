@@ -18,6 +18,7 @@ public class Intake {
     Constants constants;
     private intakePositionStates currentPosition;
     private intakeStates currentState;
+    Utilities utilities;
 
     public enum intakeStates{
         INTAKING, // collecting balls from ground
@@ -89,13 +90,18 @@ public class Intake {
     }
 
     public void intake(){
-        intakeMotor.setPower(constants.INTAKE);
+        setIntakingMotorPower(constants.INTAKE);
     }
     public void outtake(){
-        intakeMotor.setPower(constants.OUTTAKE);
+        setIntakingMotorPower(constants.OUTTAKE);
     }
     public void stopIntaking(){
-        intakeMotor.setPower(0);
+        setIntakingMotorPower(0);
+    }
+
+    private void setIntakingMotorPower(double power){
+        power = utilities.mapVictorSPX(power);
+        intakeMotor.setPower(power);
     }
 
     public intakePositionStates getIntakePositionState(){
@@ -112,6 +118,20 @@ public class Intake {
     }
 
     public void setIntakeArmPower(double power) {
+        setDeploymentMotorPower(power);
+    }
+
+    private void setDeploymentMotorPower(double power){
+        power = utilities.mapVictorSPX(power);
         deploymentMotor.setPower(power);
+    }
+
+    public void manualDeployment(double power){
+        if(upLimitSwitch.isPressed() && power > 0.0){
+            power = 0;
+        } else if(downLimitSwitch.isPressed() && power < 0.0) {
+            power = 0;
+        }
+        setDeploymentMotorPower(power);
     }
 }

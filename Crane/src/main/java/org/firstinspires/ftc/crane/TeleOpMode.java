@@ -13,20 +13,31 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 @TeleOp(name="TeleOpMode", group="actuators")
-@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
+//@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
 //////////////////////////////////////////////////////////////////////////////////////////
 
 public class TeleOpMode extends OpMode {
     private ElapsedTime runtime = new ElapsedTime();
-
-
+    DriveTrain drivetrain;
+    Agitator agitator;
+    Elevator elevator;
+    Intake intake;
+    Shooter shooter;
+    Turret turret;
+    Utilities utilities;
+    Constants constants;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
     /* Code to run ONCE when the driver hits INIT */
     @Override
     public void init() {
-
+        drivetrain = new DriveTrain(hardwareMap, telemetry);
+        agitator = new Agitator(hardwareMap, telemetry);
+        elevator = new Elevator(hardwareMap, telemetry);
+        intake = new Intake(hardwareMap, telemetry);
+        shooter = new Shooter(hardwareMap, telemetry);
+        turret = new Turret(hardwareMap, telemetry);
 
 
         // Set up our telemetry dashboard
@@ -58,7 +69,7 @@ public class TeleOpMode extends OpMode {
     @Override
     public void loop() {
         checkDriverController();
-        checkOperatorController();
+        //checkOperatorController();
 
         // Call Telemetry
         telemetry.update();
@@ -77,15 +88,60 @@ public class TeleOpMode extends OpMode {
 //////////////////////////////////////////////////////////////////////////////////////////
 
     public void checkDriverController() {
-        // TODO: Fill out this section with how you want the controller to respond to human actions
-        // Use Assignment 3 as a reference
-        // Ask questions as needed!!!
-        // These sections will largely be custom to YOUR team, so there aren't easy examples
-
+        drivetrain.arcadeDrive(-gamepad1.left_stick_y, gamepad1.right_stick_x);
     }
 
+    /*
     public void checkOperatorController() {
-        // TODO: Fill out this section if you need a SECOND controller
+        // Elevator Control + agitator?
+        if(gamepad2.dpad_up) {
+            elevator.raiseElevator();
+        } else if (gamepad2.dpad_down) {
+            elevator.lowerElevator();
+        } else {
+            elevator.stopElevator();
+        }
+
+        // Shooter Control
+        if(gamepad2.triangle) {
+            shooter.shoot();
+        } else if (gamepad2.circle) {
+            shooter.spit();
+        } else if (gamepad2.dpad_left) {
+            shooter.retractBall();
+        } else {
+            shooter.stopShooter();
+        }
+
+
+        // Turret Control
+        if (Math.abs(gamepad2.right_stick_x) > 0.1) {
+            turret.fullManualSpinTurret(gamepad2.right_stick_x);
+        } else {
+            turret.fullManualSpinTurret(0);
+        }
+
+
+        // Intake Deployment Control
+        if (gamepad2.left_bumper) {
+            intake.manualDeployment(constants.RAISE);
+        } else if (gamepad2.right_bumper){
+            intake.manualDeployment(constants.LOWER);
+        } else {
+            intake.manualDeployment(0);
+        }
+
+        // Intake Intaking Control
+        if(gamepad2.cross){
+            intake.intake();
+        } else if(gamepad2.square){
+            intake.outtake();
+        } else {
+            intake.stopIntaking();
+        }
+
+
     }
+    */
 }
 
