@@ -100,7 +100,7 @@ public class Intake {
     }
 
     private void setIntakingMotorPower(double power){
-        power = utilities.mapVictorSPX(power);
+        power = Utilities.mapVictorSPX(power);
         intakeMotor.setPower(power);
     }
 
@@ -122,7 +122,7 @@ public class Intake {
     }
 
     private void setDeploymentMotorPower(double power){
-        power = utilities.mapVictorSPX(power);
+        power = Utilities.mapVictorSPX(power);
         deploymentMotor.setPower(power);
     }
 

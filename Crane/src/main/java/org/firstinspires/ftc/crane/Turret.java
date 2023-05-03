@@ -63,7 +63,7 @@ public class Turret {
 //    }
 
     private void setTurretMotorPower(double power){
-        power = utilities.mapVictorSPX(power);
+        power = Utilities.mapVictorSPX(power);
         turretMotor.setPower(power);
     }
 

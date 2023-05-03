@@ -38,7 +38,7 @@ public class Shooter {
     }
 
     private void setMotorPowers(double power){
-        power = utilities.mapVictorSPX(power);
+        power = Utilities.mapVictorSPX(power);
         topShooterMotor.setPower(power);
         bottomShooterMotor.setPower(power);
     }

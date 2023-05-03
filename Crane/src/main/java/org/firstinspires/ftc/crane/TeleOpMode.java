@@ -38,7 +38,7 @@ public class TeleOpMode extends OpMode {
         intake = new Intake(hardwareMap, telemetry);
         shooter = new Shooter(hardwareMap, telemetry);
         turret = new Turret(hardwareMap, telemetry);
-
+        utilities = new Utilities(telemetry);
 
         // Set up our telemetry dashboard
         telemetry.update();
@@ -69,7 +69,7 @@ public class TeleOpMode extends OpMode {
     @Override
     public void loop() {
         checkDriverController();
-        //checkOperatorController();
+        checkOperatorController();
 
         // Call Telemetry
         telemetry.update();
@@ -91,7 +91,7 @@ public class TeleOpMode extends OpMode {
         drivetrain.arcadeDrive(-gamepad1.left_stick_y, gamepad1.right_stick_x);
     }
 
-    /*
+
     public void checkOperatorController() {
         // Elevator Control + agitator?
         if(gamepad2.dpad_up) {
@@ -142,6 +142,6 @@ public class TeleOpMode extends OpMode {
 
 
     }
-    */
+
 }
 

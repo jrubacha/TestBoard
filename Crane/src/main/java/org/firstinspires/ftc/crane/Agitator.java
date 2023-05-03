@@ -21,7 +21,7 @@ public class Agitator {
     }
 
     private void setAgitatorMotorPower(double power){
-        power = utilities.mapVictorSPX(power);
+        power = Utilities.mapVictorSPX(power);
         agitatorMotors.setPower(power);
     }
     public void agitatorIn(){

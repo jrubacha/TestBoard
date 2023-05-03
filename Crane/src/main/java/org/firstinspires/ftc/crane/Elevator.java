@@ -21,7 +21,7 @@ public class Elevator {
     }
 
     private void setElevatorPower(double power){
-        power = utilities.mapVictorSPX(power);
+        power = Utilities.mapVictorSPX(power);
         elevatorMotors.setPower(power);
     }
     public void stopElevator(){

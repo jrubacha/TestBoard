@@ -3,7 +3,7 @@ package org.firstinspires.ftc.crane;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Utilities {
-    Constants constants;
+    static Constants constants;
     Telemetry telemetry;
 
     public Utilities(Telemetry telemetry){
@@ -21,7 +21,7 @@ public class Utilities {
      * @param out_max  - the max value of the range you want the value to be in
      * @return
      */
-    private double map(double value, double in_min, double in_max, double out_min, double out_max) {
+    private static double map(double value, double in_min, double in_max, double out_min, double out_max) {
         return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
 
@@ -30,13 +30,8 @@ public class Utilities {
      * @param value - the value to be mapped
      * @return
      */
-    public double mapVictorSPX(double value) {
-        try {
-            return map(value, -1, 1, constants.VICTOR_SPX_LOWER_BOUND, constants.VICTOR_SPX_UPPER_BOUND);
-        } catch (NullPointerException e) {
-            telemetry.addData("Exception", e);
-            return 0;
-        }
+    public static double mapVictorSPX(double value) {
+        return map(value, -1, 1, constants.VICTOR_SPX_LOWER_BOUND, constants.VICTOR_SPX_UPPER_BOUND);
     }
 
 
