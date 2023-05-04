@@ -1,6 +1,9 @@
 package org.firstinspires.ftc.crane;
 
+import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
+
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -18,6 +21,7 @@ public class Elevator {
     public Elevator(HardwareMap hardwareMap, Telemetry telemetry) {
         elevatorMotors = hardwareMap.get(CRServo.class, "elevatorMotors");
         this.telemetry = telemetry;
+        elevatorMotors.setDirection(REVERSE);
     }
 
     private void setElevatorPower(double power){

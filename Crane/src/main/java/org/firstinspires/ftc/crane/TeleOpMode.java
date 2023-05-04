@@ -105,7 +105,7 @@ public class TeleOpMode extends OpMode {
         // Shooter Control
         if(gamepad2.triangle) {
             shooter.shoot();
-        } else if (gamepad2.circle) {
+        } else if (gamepad2.cross) {
             shooter.spit();
         } else if (gamepad2.dpad_left) {
             shooter.retractBall();
@@ -132,7 +132,7 @@ public class TeleOpMode extends OpMode {
         }
 
         // Intake Intaking Control
-        if(gamepad2.cross){
+        if(gamepad2.circle){
             intake.intake();
         } else if(gamepad2.square){
             intake.outtake();

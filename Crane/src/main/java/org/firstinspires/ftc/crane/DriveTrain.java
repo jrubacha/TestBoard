@@ -50,10 +50,10 @@ public class DriveTrain {
         frontRight = hardwareMap.get(CRServo.class, "frontRight");
 
         // TODO: Set motor/servo directions. They will default to FORWARD, use this to change items to REVERSE as needed
-        frontLeft.setDirection(REVERSE);
+        frontLeft.setDirection(FORWARD);
         backLeft.setDirection(FORWARD);
 
-        frontRight.setDirection(FORWARD);
+        frontRight.setDirection(REVERSE);
         backRight.setDirection(REVERSE);
 
         // TODO: Choose your Zero Power Behavior. They will default to COAST, use this to change items to BRAKE as needed
@@ -76,6 +76,8 @@ public class DriveTrain {
         try {
             powers[0] = utilities.mapVictorSPX(powers[0]);
             powers[1] = utilities.mapVictorSPX(powers[1]);
+            telemetry.addData("pow 0", powers[0]);
+            telemetry.addData("pow 1", powers[1]);
             setPower(powers[0], powers[1]);
         }catch(NullPointerException e){
             telemetry.addLine("Actually, I break here.");
