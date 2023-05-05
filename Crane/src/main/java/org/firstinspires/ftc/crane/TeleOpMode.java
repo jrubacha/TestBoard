@@ -89,6 +89,17 @@ public class TeleOpMode extends OpMode {
 
     public void checkDriverController() {
         drivetrain.arcadeDrive(-gamepad1.left_stick_y, gamepad1.right_stick_x);
+
+        //drivetrain.tankDrive(-gamepad1.left_stick_y, -gamepad1.right_stick_y);
+
+        // Intake Intaking Control
+        if(gamepad1.right_bumper){
+            intake.intake();
+        } else if(gamepad1.left_bumper){
+            intake.outtake();
+        } else {
+            intake.stopIntaking();
+        }
     }
 
 
@@ -130,16 +141,6 @@ public class TeleOpMode extends OpMode {
         } else {
             intake.manualDeployment(0);
         }
-
-        // Intake Intaking Control
-        if(gamepad2.circle){
-            intake.intake();
-        } else if(gamepad2.square){
-            intake.outtake();
-        } else {
-            intake.stopIntaking();
-        }
-
 
     }
 

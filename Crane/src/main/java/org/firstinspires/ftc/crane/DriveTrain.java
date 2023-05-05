@@ -21,11 +21,6 @@ import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.FORWARD;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 
 public class DriveTrain {
-    // TODO: Create motors for the drive train.
-    //  Note: Only create a motor here for every motor controller used on the drivetrain
-    //  Motor controllers are considered CRServos, as they need the raw pwm signal
-
-    // Example:
     private CRServo backLeft, backRight, frontLeft, frontRight;
     Utilities utilities;
 
@@ -34,32 +29,18 @@ public class DriveTrain {
 
     public DriveTrain(HardwareMap hardwareMap, Telemetry telemetry) {
         this.telemetry = telemetry;
-        // TODO: Finish the hardware map for your drivetrain
-        /** Setting up the hardware map.
-         *  - Remember that every item typed in the quotes, be it a motor/servo, must match EXACTLY what you type in on the phone while configuring the robot
-         *  - This does not have to match the variable used here
-         *  - The name, in either location, should be clear and descriptive
-         *  - You will need one line of hardwareMap for attached actuator
-         */
 
-
-        // CR Servo Example:
         backLeft = hardwareMap.get(CRServo.class, "backLeft");
         frontLeft = hardwareMap.get(CRServo.class, "frontLeft");
         backRight = hardwareMap.get(CRServo.class, "backRight");
         frontRight = hardwareMap.get(CRServo.class, "frontRight");
 
-        // TODO: Set motor/servo directions. They will default to FORWARD, use this to change items to REVERSE as needed
         frontLeft.setDirection(FORWARD);
         backLeft.setDirection(FORWARD);
 
         frontRight.setDirection(REVERSE);
         backRight.setDirection(REVERSE);
 
-        // TODO: Choose your Zero Power Behavior. They will default to COAST, use this to change items to BRAKE as needed
-        // Brake: Motor/servo will use current to stop the momentum quickly
-        // Coast: Motor/servo will stop providing current, but allow momentum to continue
-        // Example:
     }
 
     public void setPower(double leftSpeed, double rightSpeed) {
