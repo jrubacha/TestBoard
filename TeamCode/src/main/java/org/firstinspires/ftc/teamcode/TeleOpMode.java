@@ -75,6 +75,7 @@ public class TeleOpMode extends OpMode {
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
+// TODO: Write human controls in this section ONLY. See notes below
 
     public void checkDriverController() {
         // TODO: Fill out this section with how you want the controller to respond to human actions

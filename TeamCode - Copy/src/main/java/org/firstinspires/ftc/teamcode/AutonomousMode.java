@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 //////////////////////////////////////////////////////////////////////////////////////////
 @Autonomous(name= "Autonomous", group="Auto")
+// TODO: Enable the program as desired.
 @Disabled
 //////////////////////////////////////////////////////////////////////////////////////////
 public class AutonomousMode extends LinearOpMode {

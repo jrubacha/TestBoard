@@ -12,7 +12,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 @TeleOp(name="TeleOpMode", group="actuators")
-@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
+// TODO: Enable the program.
+@Disabled
 //////////////////////////////////////////////////////////////////////////////////////////
 
 public class TeleOpMode extends OpMode {
@@ -74,6 +75,7 @@ public class TeleOpMode extends OpMode {
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
+// TODO: Write human controls in this section ONLY. See notes below
 
     public void checkDriverController() {
         // TODO: Fill out this section with how you want the controller to respond to human actions

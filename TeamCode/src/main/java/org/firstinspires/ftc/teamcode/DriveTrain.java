@@ -21,12 +21,12 @@ import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 
 public class DriveTrain {
     // TODO: Create each of your motors/servos in your DRIVETRAIN as appropriate
-    // It is good practice to give every device a meaningful name. For example: leftMotor, frontRightMotor, etc.
+    //  It is good practice to give every device a meaningful name. For example: leftMotor, frontRightMotor, etc.
 
-    // For every drivetrain motor:
+    // For every drivetrain motor, create it following this format:
     // private DcMotor motorName;
 
-    // For every drivetrain Continuous Rotation Servo:
+    // For every drivetrain Continuous Rotation Servo, create it following this format:
     // private CRServo servoName;
     //
 
@@ -37,9 +37,8 @@ public class DriveTrain {
         // TODO: Finish the hardware map for your drivetrain
         /** Setting up the hardware map.
          *  - Remember that every item typed in the quotes, be it a motor/servo, must match EXACTLY what you type in on the phone while configuring the robot
-         *  - This does not have to match the variable used here
          *  - The name, in either location, should be clear and descriptive
-         *  - You will need one line of hardwareMap for attached actuator
+         *  - You will need one line of hardwareMap for each attached actuator
          */
 
         // Motor Example:
@@ -70,8 +69,8 @@ public class DriveTrain {
 
     // Continuous Rotation Servo Drivetrain
     public void setCRServoPower(double leftPow, double rightPow) {
-        leftPow = Utilities.map393(leftPow);
-        rightPow = Utilities.map393(rightPow);
+        leftPow = Utilities.map393(leftPow);    // no edit
+        rightPow = Utilities.map393(rightPow);  // no edit
         // TODO: For each drive CR servo, utilize the following command in a manner fitting your setup
         // All servos on the left should share the left variable, all on the right share the right variable
         // Example: backLeft.setPower(leftPow);
@@ -83,7 +82,7 @@ public class DriveTrain {
      *  You will call the method you created above when you write the stopDriving method
      */
     public void stopDriving(){
-        // Use your set___Power method with input values of zero
+        // Use your setDrivePower or setCRServoPower method with input values of zero
 
     }
 
