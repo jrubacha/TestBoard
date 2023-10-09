@@ -105,6 +105,9 @@ public class DriveTrain {
         leftMotorOutput = throttle + rotation;
         rightMotorOutput = throttle - rotation;
 
+        throttle *= Constants.DRIVE_SPEED;
+        rotation *= Constants.TURN_SPEED;
+
         telemetry.addData("ArcadeLeft", leftMotorOutput);
         telemetry.addData( "ArcadeRight", rightMotorOutput);
         double[] motorPowers = {leftMotorOutput, rightMotorOutput};

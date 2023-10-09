@@ -25,9 +25,12 @@ public class Agitator {
         agitatorMotors.setPower(power);
     }
     public void agitatorIn(){
-        agitatorMotors.setPower(constants.AGITATOR_IN);
+        setAgitatorMotorPower(constants.AGITATOR_IN);
     }
     public void agitatorOut(){
-        agitatorMotors.setPower(constants.AGITATOR_OUT);
+        setAgitatorMotorPower(constants.AGITATOR_OUT);
+    }
+    public void agitatorStop(){
+        setAgitatorMotorPower(0);
     }
 }

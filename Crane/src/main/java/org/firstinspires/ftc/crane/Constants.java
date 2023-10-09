@@ -14,8 +14,8 @@ public class Constants {
     public final static double LINEAR_SERVO_UPPER_BOUND = 0.9;
 
     // Driving Constants
-    public final static double TURN_SPEED = 0.75;
-    public final static double DRIVE_SPEED = 0.9;
+    public final static double TURN_SPEED = 0.5;
+    public final static double DRIVE_SPEED = 0.8;
 
     // Intake Constants
     public final static double INTAKE = 0.8;
@@ -29,7 +29,7 @@ public class Constants {
 
     // Agitator Constants
     public final static double AGITATOR_IN = 0.75;
-    public final static double AGITATOR_OUT = 0.75;
+    public final static double AGITATOR_OUT = -0.75;
 
     // Shooter Constants
     public final static double RETRACT = -0.3;
