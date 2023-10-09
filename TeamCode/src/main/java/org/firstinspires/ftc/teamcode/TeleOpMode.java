@@ -12,7 +12,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 @TeleOp(name="TeleOpMode", group="actuators")
-@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
+// TODO: Enable the program.
+@Disabled
 //////////////////////////////////////////////////////////////////////////////////////////
 
 public class TeleOpMode extends OpMode {

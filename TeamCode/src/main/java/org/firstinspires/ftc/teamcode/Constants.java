@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 public class Constants {
     // Vex 393 Limits
-    public final double VEX_393_LOWER_BOUND = -0.8;
-    public final double VEX_393_UPPER_BOUND = 0.8;
+    public static final double VEX_393_LOWER_BOUND = -0.8;
+    public static final double VEX_393_UPPER_BOUND = 0.8;
 
     // GoBilda Linear Servo Limits
     public final double LINEAR_SERVO_LOWER_BOUND = 0.1;

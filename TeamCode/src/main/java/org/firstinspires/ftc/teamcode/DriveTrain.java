@@ -21,12 +21,13 @@ import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 
 public class DriveTrain {
     // TODO: Create each of your motors/servos in your DRIVETRAIN as appropriate
+    // It is good practice to give every device a meaningful name. For example: leftMotor, frontRightMotor, etc.
 
-    // For every Motor:
-    // private DcMotor leftMotor;
+    // For every drivetrain motor:
+    // private DcMotor motorName;
 
-    // For every Continuous Rotation Servo:
-    // private CRServo backLeft;
+    // For every drivetrain Continuous Rotation Servo:
+    // private CRServo servoName;
     //
 
     Telemetry telemetry; // Do not edit
@@ -42,39 +43,38 @@ public class DriveTrain {
          */
 
         // Motor Example:
-        // leftMotor = hardwareMap.get(DcMotor.class, "leftMotor");
+        // motorName = hardwareMap.get(DcMotor.class, "motorName");
 
         // CR Servo Example:
-        // backLeft = hardwareMap.get(CRServo.class, "backLeft");
+        // servoName = hardwareMap.get(CRServo.class, "servoName");
 
         // TODO: Set motor/servo directions. They will default to FORWARD, use this to change items to REVERSE as needed
-        // armMotor.setDirection(REVERSE);
+        // motorName.setDirection(REVERSE);
 
         // TODO: Choose your Zero Power Behavior. They will default to COAST, use this to change items to BRAKE as needed
         // Brake: Motor/servo will use current to stop the momentum quickly
         // Coast: Motor/servo will stop providing current, but allow momentum to continue
         // Example:
-        // leftMotor.setZeroPowerBehavior(BRAKE);
+        // motorName.setZeroPowerBehavior(BRAKE);
     }
 
 
-    //TODO: Set power for your motors. Use the APPROPRIATE method for your drivetrain
-    /** Regardless of the drive type, you will need to add code inside one of the following methods
-     *  You will use the variables leftPow and rightPow within to control the actuators
-     *  Follow the examples provided
-     */
+    //TODO: Set power for your drivetrain. Choose the appropriate section.
+    // Nothing in this section should reference a gamepad. This code will work for ALL driving, auto and human controlled.
 
     // Motor-based DriveTrain
     public void setDrivePower(double leftPow, double rightPow) {
-        // Example for setting power, each motor will need one of these, referencing the appropriate input
-        // myMotor.setPower(leftPow);
+        // TODO: For each drive MOTOR, utilize the following command in a manner fitting your setup
+        // Example: leftMotor.setPower(leftPow);
     }
 
     // Continuous Rotation Servo Drivetrain
     public void setCRServoPower(double leftPow, double rightPow) {
-        // Example for setting power, each servo will need one of these
-        // Left should share the left variable, right shares the right variable
-        // backLeft.setPower(leftPow);
+        leftPow = Utilities.map393(leftPow);
+        rightPow = Utilities.map393(rightPow);
+        // TODO: For each drive CR servo, utilize the following command in a manner fitting your setup
+        // All servos on the left should share the left variable, all on the right share the right variable
+        // Example: backLeft.setPower(leftPow);
     }
 
     // TODO: Create stop DRIVING to match YOUR drive style
