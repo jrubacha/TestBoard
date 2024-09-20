@@ -19,6 +19,7 @@ public class Flipper {
         flipperRight = hardwareMap.get(CRServo.class, "flipperRight");
 
         flipperLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+        flipperRight.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     private void setFlipperServoPowers(double power){

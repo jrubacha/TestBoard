@@ -21,7 +21,7 @@ public class Climber {
         climbServoRight = hardwareMap.get(CRServo.class, "climbServoRight");
 
         climbMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        //climbServoRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        climbServoRight.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     private void setServoPowers(double power){
