@@ -7,22 +7,30 @@ package org.firstinspires.ftc.tacobot;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.tacobot.Subsystems.Climber;
+import org.firstinspires.ftc.tacobot.Subsystems.DriveTrain;
+import org.firstinspires.ftc.tacobot.Subsystems.Elevator;
+import org.firstinspires.ftc.tacobot.Subsystems.Flipper;
+import org.firstinspires.ftc.tacobot.Subsystems.Intake;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
-@TeleOp(name="SOLO TeleOpMode", group="actuators")
+@TeleOp(name="TeleOpMode", group="tacos")
 //@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
 //////////////////////////////////////////////////////////////////////////////////////////
 
-public class TeleOpModeSolo extends OpMode {
+public class TeleOpMode extends OpMode {
     private ElapsedTime runtime = new ElapsedTime();
     DriveTrain drivetrain;
-    Agitator agitator;
     Elevator elevator;
     Intake intake;
-    Shooter shooter;
-    Turret turret;
+    Flipper flipper;
+    Climber climber;
+
+
     Utilities utilities;
     Constants constants;
 
@@ -32,11 +40,11 @@ public class TeleOpModeSolo extends OpMode {
     @Override
     public void init() {
         drivetrain = new DriveTrain(hardwareMap, telemetry);
-        agitator = new Agitator(hardwareMap, telemetry);
         elevator = new Elevator(hardwareMap, telemetry);
         intake = new Intake(hardwareMap, telemetry);
-        shooter = new Shooter(hardwareMap, telemetry);
-        turret = new Turret(hardwareMap, telemetry);
+        flipper = new Flipper(hardwareMap, telemetry);
+        climber = new Climber(hardwareMap, telemetry);
+
         utilities = new Utilities(telemetry);
 
         // Set up our telemetry dashboard
@@ -87,68 +95,68 @@ public class TeleOpModeSolo extends OpMode {
 //////////////////////////////////////////////////////////////////////////////////////////
 
     public void checkDriverController() {
-        drivetrain.arcadeDrive(-gamepad1.left_stick_y, gamepad1.right_stick_x);
+        Gamepad driver = gamepad1;
 
-        //drivetrain.tankDrive(-gamepad1.left_stick_y, -gamepad1.right_stick_y);
+        // Drive Controls
+        drivetrain.mecanumDrive_Cartesian(driver.left_stick_x, driver.left_stick_y, driver.right_stick_x);
 
-        // Intake Intaking Control
-        if(gamepad1.right_bumper){
-            intake.intake();
-        } else if(gamepad1.left_bumper){
-            intake.outtake();
-        } else {
-            intake.stopIntaking();
-        }
-
-        if(gamepad1.right_trigger > 0){
-            turret.manualTurretRight();
-        } else if (gamepad1.left_trigger > 0){
-            turret.manualTurretLeft();
-        } else {
-            turret.manualTurretStop();
-        }
-
-        if(gamepad1.left_bumper){
-            intake.outtake();
-        } else if (gamepad1.right_bumper) {
-            intake.intake();
-        } else if (gamepad1.dpad_left){
-            intake.stopIntaking();
-        }
-
-        if(gamepad1.triangle){
-            shooter.shoot();
-        } else if(gamepad1.circle) {
-            shooter.spit();
-        } else if(gamepad1.cross) {
-            shooter.retractBall();
-        } else {
-            shooter.stopShooter();
-        }
-
-        if(gamepad1.dpad_left) {
-            intake.setDeploymentMotorPower(0.5);
-        } else if(gamepad1.dpad_right){
-            intake.setDeploymentMotorPower(-0.5);
-        } else {
-            intake.setDeploymentMotorPower(0);
-        }
-
-        if(gamepad1.dpad_up) {
+        // Elevator Controls
+        if (driver.right_trigger > 0.1) {
             elevator.raiseElevator();
-            agitator.agitatorIn();
-        } else if (gamepad1.dpad_down) {
+        } else if (driver.left_trigger > 0.1 ) {
             elevator.lowerElevator();
-            agitator.agitatorOut();
         } else {
             elevator.stopElevator();
-            agitator.agitatorStop();
+        }
+
+        // Intake Controls
+        if (driver.triangle) {
+            intake.deployIntake();
+        } else if (driver.cross) {
+            intake.retractIntake();
+        } else {
+            intake.stopIntakePivot();
+        }
+
+        if(driver.right_bumper) {
+            intake.intake();
+        } else if (driver.left_bumper) {
+            intake.outtake();
+        } else {
+            intake.stopIntaking();
+        }
+
+        // Flipper Controls
+        if(driver.circle){
+            flipper.flipperExtend();
+        } else if (driver.square){
+            flipper.flipperRetract();
+        } else {
+            flipper.stopFlipperMovement();
+        }
+
+        // Climb Controls
+        if(driver.dpad_up) {
+            climber.ascend();
+        } else if (driver.dpad_down) {
+            climber.descend();
+        } else {
+            climber.stopClimber();
+        }
+
+        if(driver.dpad_right) {
+            climber.deployClimbServos();
+        } else if (driver.dpad_left) {
+            climber.retractClimbServos();
+        } else {
+            climber.stopClimbServos();
         }
 
     }
 
 
     public void checkOperatorController() {
+
 
     }
 

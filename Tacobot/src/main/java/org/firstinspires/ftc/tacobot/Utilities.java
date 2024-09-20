@@ -30,9 +30,7 @@ public class Utilities {
      * @param value - the value to be mapped
      * @return
      */
-    public static double mapVictorSPX(double value) {
-        return map(value, -1, 1, constants.VICTOR_SPX_LOWER_BOUND, constants.VICTOR_SPX_UPPER_BOUND);
-    }
+
 
 
     /**

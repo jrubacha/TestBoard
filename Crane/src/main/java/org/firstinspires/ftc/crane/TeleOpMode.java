@@ -3,7 +3,7 @@
  * Fill out the controller sections of this code for how you want the human to control the robot
  */
 //////////////////////////////////////////////////////////////////////////////////////////
-package org.firstinspires.ftc.crane;
+package org.firstinspires.ftc.tacobot;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
