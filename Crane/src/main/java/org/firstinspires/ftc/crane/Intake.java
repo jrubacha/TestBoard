@@ -18,7 +18,7 @@ public class Intake {
     Constants constants;
     private intakePositionStates currentPosition;
     private intakeStates currentState;
-    Utilities utilities;
+    Utilities utilities; //
 
     public enum intakeStates{
         INTAKING, // collecting balls from ground
