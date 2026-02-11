@@ -74,6 +74,5 @@ public class Actuators {
     public void printActuatorTelemetry(){
         telemetry.addLine("\n=== Actuators ===");
         printMotorEncoderValue();
-        printServoPosition();
     }
 }
