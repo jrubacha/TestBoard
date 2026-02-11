@@ -46,13 +46,18 @@ public class Sensors {
 
     // Potentiometer
     public double getPotReading(){
-        return pot.getVoltage();
+        return mapPotReading();
     }
+
     public void printPotReading(){
-        telemetry.addData("Potentiometer", getPotReading());
+        telemetry.addData("Potentiometer (raw)", getRawPotReading());
+        telemetry.addData("Potentiometer (mapped)", getPotReading());
     }
     public double mapPotReading(){
-        return getPotReading() / 3.321;
+        return getRawPotReading() / 3.321;
+    }
+    public double getRawPotReading(){
+        return pot.getVoltage();
     }
 
     // Color Sensor
@@ -73,7 +78,7 @@ public class Sensors {
         printLimitSwitchState();
         printPotReading();
         printColorSensorValues();
-        telemetry.addData("imu heading", imu.getHeading());
+        telemetry.addData("IMU Heading", imu.getHeading());
         imu.getSystemInfo();
     }
 }
