@@ -72,10 +72,11 @@ public class IMU {
     }
 
     // Telemetry
-    public void getSystemInfo(){
+    public void printIMUTelemetry(){
         findCurrentData();
-        telemetry.addData("status", imu.getSystemStatus().toShortString());
-        telemetry.addData("calib", imu.getCalibrationStatus().toString());
+        telemetry.addData("  Heading", "%.1f", angles.firstAngle);
+        telemetry.addData("  Roll", "%.1f", angles.secondAngle);
+        telemetry.addData("  Pitch", "%.1f", angles.thirdAngle);
     }
 
 

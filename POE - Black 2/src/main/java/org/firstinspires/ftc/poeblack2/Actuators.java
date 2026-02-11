@@ -53,7 +53,12 @@ public class Actuators {
     public void setServoPosition(double pos) {
         myServo.setPosition(pos);
     }
-
+    public double getServoPosition(){
+        return myServo.getPosition();
+    }
+    public void printServoPosition(){
+        telemetry.addData("Servo Position", getServoPosition());
+    }
 
 
     // Continuous Rotation Servo
@@ -67,7 +72,8 @@ public class Actuators {
 
     // Actuator Telemetry
     public void printActuatorTelemetry(){
-        telemetry.addLine("=== Actuators ===");
+        telemetry.addLine("\n=== Actuators ===");
         printMotorEncoderValue();
+        printServoPosition();
     }
 }
