@@ -28,10 +28,11 @@ public class Assignment1b extends LinearOpMode {
 
         actuators.setServoPosition(0);
 
-        // TODO: #1 Uncomment the line below when instructed
+        // TODO #1: Uncomment the line below
         //telemetry.addLine("Hello World!");
 
-        // TODO: #2 Add a telemetry statement below this line with a custom message of your own
+        // TODO #2: Add a new telemetry line below with a custom message of your choosing
+
         telemetry.addLine("Test board initialized and ready");
         telemetry.update();
 
@@ -49,12 +50,16 @@ public class Assignment1b extends LinearOpMode {
     }
     //////////////////////////////////////////////////////////////////////////////////////////
     private void runEverything(){
-        // TODO: #3. Change the numerical values below as prompted
-        // value ranges -1 - 1
+        // TODO #3: Change the CR Servo power and observe the effect
+        // Valid range: -1.0 to 1.0
         actuators.setCRServoPower(0.5);
+
+        // TODO #4: Change the Motor power and observe the effect
+        // Valid range: -1.0 to 1.0
         actuators.setMotorPower(0.5);
 
-        // value ranges 0 - 1
+        // TODO #5: Change the Servo position and observe the effect
+        // Valid range: 0.0 to 1.0
         actuators.setServoPosition(-1);
     }
 
