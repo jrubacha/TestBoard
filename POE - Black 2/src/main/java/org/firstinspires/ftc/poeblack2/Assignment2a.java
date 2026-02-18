@@ -1,24 +1,17 @@
-/** TODO: Read the following instructions
- *
- * There are no changes to be made within this code.
- *
- * Assignment 1 is observational only.
- *
- * Please do not make any changes to this program.
- */
-
 //////////////////////////////////////////////////////////////////////////////////////////
-package org.firstinspires.ftc.poeblack1;
+package org.firstinspires.ftc.poeblack2;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
 //////////////////////////////////////////////////////////////////////////////////////////
-@Autonomous(name= "Assignment 1a", group="Assignments")
-//@Disabled
+@Autonomous(name= "Assignment 2", group="Assignments")
+// TODO #1: Enable the Program
+@Disabled
 //////////////////////////////////////////////////////////////////////////////////////////
-public class Assignment1a extends LinearOpMode {
+public class Assignment2a extends LinearOpMode {
     BotUtilities util;
     Actuators actuators;
     Sensors sensors;
@@ -40,10 +33,21 @@ public class Assignment1a extends LinearOpMode {
         runtime.reset();
         while (opModeIsActive()) {
             callTelemetry();
+            runEverything();
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////
 
+    private void runEverything() {
+        // TODO #2: Using variables - pot to servo
+
+        // TODO #3: Using variables - pot to CR servo
+
+        // TODO #4: Telemetry by buttons
+
+        // TODO #5: Using variables - pot to Motor & button direction control
+
+    }
     private void callTelemetry() {
         // Show the elapsed game time
         telemetry.addData("Run Time: ", runtime.toString());

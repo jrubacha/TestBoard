@@ -1,9 +1,11 @@
-// TODO: Read the following instructions
-/**
- * Fill out the controller sections of this code for how you want the human to control the robot
+/** TODO: Read the following instructions
+ *
+ * Follow along with the assignment on Canvas to use this OpMode
+ *
+ * Except where specified, do NOT make any changes to the program.
  */
-//////////////////////////////////////////////////////////////////////////////////////////
-package org.firstinspires.ftc.poeblack1;
+
+package org.firstinspires.ftc.poeblack4;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -11,29 +13,29 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-@TeleOp(name="TeleOpMode", group="actuators")
-// TODO: Enable the program.
-@Disabled
+@TeleOp(name="Assignment 2", group="actuators")
+
+@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
 //////////////////////////////////////////////////////////////////////////////////////////
 
-public class TeleOpMode extends OpMode {
+public class Assignment2 extends OpMode {
     private ElapsedTime runtime = new ElapsedTime();
-    DriveTrain drivetrain;
-    Mechanisms mechanisms;
+    Sensors sensors;
+    Actuators actuators;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
     /* Code to run ONCE when the driver hits INIT */
     @Override
     public void init() {
-        drivetrain = new DriveTrain(hardwareMap, telemetry);
-        mechanisms = new Mechanisms(hardwareMap, telemetry);
+        // Create our two objects needed for this assignment
+        sensors = new Sensors(hardwareMap, telemetry);
+        actuators = new Actuators(hardwareMap, telemetry);
 
-        // Set up our telemetry dashboard
+
+        // Tell the user that initialization is complete.
+        telemetry.addLine("actuators is now ready to be used.");
         telemetry.update();
-
-        // Tell the driver that initialization is complete.
-        telemetry.addData("Status", "Initialized    :)");
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -49,7 +51,7 @@ public class TeleOpMode extends OpMode {
     @Override
     public void start() {
         runtime.reset();
-        updateTelemetry(telemetry);
+        getTelemetry();
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -57,11 +59,12 @@ public class TeleOpMode extends OpMode {
     /* Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP */
     @Override
     public void loop() {
-        checkDriverController();
-        checkOperatorController();
+        // Run actions for this sample opmode
+        runEverything();
 
         // Call Telemetry
-        telemetry.update();
+        getTelemetry();
+
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -69,24 +72,40 @@ public class TeleOpMode extends OpMode {
     /* Code to run ONCE after the driver hits STOP */
     @Override
     public void stop() {
-        telemetry.addData("Robot Stopped. ", "Have a nice day.");
         telemetry.addData("Final runtime: ", runtime.toString());
         telemetry.update();
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// TODO: Write human controls in this section ONLY. See notes below
 
-    public void checkDriverController() {
-        // TODO: Fill out this section with how you want the controller to respond to human actions
-        // Use Assignment 3 as a reference
-        // Ask questions as needed!!!
-        // These sections will largely be custom to YOUR team, so there aren't easy examples
+    private void runEverything(){
+        double motorPower = 0.75;
+        // TODO: #2 Create a variable named restingServoPosition and set it equal to 0.5
+
+        // TODO: #3 Create a variable named targetServoPosition and set it equal to -0.25
+
+
+        actuators.setMotorPower(motorPower);
+
+        // TODO: #4 Utilize an if-else statement to control the servo using the pushbutton
 
     }
 
-    public void checkOperatorController() {
-        // TODO: Fill out this section if you need a SECOND controller
-    }
+
+    private void getTelemetry() {
+        // Show the elapsed game time
+        telemetry.addData("Run Time: ", runtime.toString());
+
+        // Use sensor data to add / remove a message
+        // TODO: #1 Create an if-else statement to display a custom message when the limit switch is pushed
+
+
+        // Display Values of all the attached sensors
+        sensors.printSensorTelemetry();
+        telemetry.update();
+    }  // getTelemetry
+
+
+
 }
 

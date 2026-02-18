@@ -1,5 +1,5 @@
 //
-// build.gradle in POE - Black 1
+// build.gradle in POE - Black 4
 //
 // Most of the definitions for building your module reside in a common, shared
 // file 'build.common.gradle'. Being factored in this way makes it easier to
@@ -16,16 +16,17 @@ apply from: '../build.common.gradle'
 apply from: '../build.dependencies.gradle'
 
 android {
-    namespace = 'org.firstinspires.ftc.poeblack1'
+    namespace = 'org.firstinspires.ftc.poeblack4'
 
     packagingOptions {
         jniLibs {
             pickFirsts += ['**/*.so']
         }
-        jniLibs.useLegacyPackaging true
     }
 }
 
+
 dependencies {
     implementation project(':FtcRobotController')
+    annotationProcessor files('lib/OpModeAnnotationProcessor.jar')
 }

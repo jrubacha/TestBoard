@@ -15,7 +15,6 @@ public class Sensors {
     private TouchSensor pushButton, limitSwitch;
     private AnalogInput pot;
     private ColorSensor color;
-    IMU imu;
     Telemetry telemetry;
 
     // Constructor
@@ -25,7 +24,6 @@ public class Sensors {
         pot = hardwareMap.get(AnalogInput.class, "potentiometer");
         limitSwitch = hardwareMap.get(TouchSensor.class, "limitSwitch");
         color = hardwareMap.get(ColorSensor.class, "colorV3");
-        imu = new IMU(hardwareMap, telemetry);
     }
 
     // pushButton
@@ -46,13 +44,17 @@ public class Sensors {
 
     // Potentiometer
     public double getPotReading(){
-        return pot.getVoltage();
+        return mapPotReading();
     }
+
     public void printPotReading(){
         telemetry.addData("Potentiometer", getPotReading());
     }
     public double mapPotReading(){
-        return getPotReading() / 3.321;
+        return getRawPotReading() / 3.321;
+    }
+    public double getRawPotReading(){
+        return pot.getVoltage();
     }
 
     // Color Sensor
@@ -73,7 +75,5 @@ public class Sensors {
         printLimitSwitchState();
         printPotReading();
         printColorSensorValues();
-        telemetry.addData("imu heading", imu.getHeading());
-        imu.getSystemInfo();
     }
 }
