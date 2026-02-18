@@ -1,6 +1,7 @@
-// TODO: Read the following instructions
-/**
- * The purpose of this assignment is to introduce you to using input in order to control functions.
+/** TODO: Read the following instructions
+ *
+ * The purpose of this assignment is to introduce you to using input
+ * in order to control functions.
  *
  * You will learn about logic statements and the gamepad.
  *
@@ -15,15 +16,15 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-@TeleOp(name="Assignment 3", group="actuators")
-@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
+@TeleOp(name="Assignment 3", group="Assignments")
+// TODO #1: Enable the program
+@Disabled
 //////////////////////////////////////////////////////////////////////////////////////////
 
 public class Assignment3 extends OpMode {
     private ElapsedTime runtime = new ElapsedTime();
     Sensors sensors;
     Actuators actuators;
-
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -33,18 +34,7 @@ public class Assignment3 extends OpMode {
         sensors = new Sensors(hardwareMap, telemetry);
         actuators = new Actuators(hardwareMap, telemetry);
 
-        // Set up our telemetry dashboard
-        updateTelemetry(telemetry);
-
-        // Tell the driver that initialization is complete.
-        telemetry.addData("Status", "Initialized    :)");
-    }
-
-//////////////////////////////////////////////////////////////////////////////////////////
-
-    /* Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY */
-    @Override
-    public void init_loop() {
+        telemetry.addData("Status", "Initialized");
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -53,7 +43,6 @@ public class Assignment3 extends OpMode {
     @Override
     public void start() {
         runtime.reset();
-        updateTelemetry(telemetry);
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -62,7 +51,6 @@ public class Assignment3 extends OpMode {
     @Override
     public void loop() {
         checkDriverController();
-        // Call Telemetry
         telemetry.update();
     }
 
@@ -71,39 +59,31 @@ public class Assignment3 extends OpMode {
     /* Code to run ONCE after the driver hits STOP */
     @Override
     public void stop() {
-        telemetry.addData("Robot Stopped. ", "Have a nice day.");
-        telemetry.addData("Final runtime: ", runtime.toString());
+        telemetry.addData("Final runtime", runtime.toString());
         telemetry.update();
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
     public void checkDriverController() {
-        // Example if statement that adds a telemetry message if the square is pushed
+        // Example: Display a telemetry message when the square button is pressed
         if (gamepad1.square) {
             telemetry.addLine("Square pushed");
         }
 
-        // TODO: Use an if statement to add telemetry statement for the gamepad to show when the triangle is pushed
+        // TODO #2: Use an if statement to display a telemetry message
+        //          when a gamepad button is pressed
 
-
-        // TODO: Complete the if-elseif-else statement below to control the servo position using the triangle and cross buttons. You will need to uncomment the code first
-        // You can quickly comment/uncomment code by highlighting all of it and press CTRL+/ on your keyboard
+        // TODO #3: Use gamepad buttons to control the servo position
+        //          Consider the difference between analog and digital inputs
 //        if (gamepad1.) {
 //            actuators.setServoPosition(.5);
 //        } else if () {
 //
 //        }
 
-
-
-        // TODO: Set power to the motor based on the left_stick_y value
-        // Start typing actuators. (like above) to find motor methods
-
-
-
+        // TODO #4: Use a joystick to control the motor power
 
     }
 
 }
-

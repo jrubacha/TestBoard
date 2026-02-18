@@ -1,3 +1,7 @@
+/** TODO: Read the following instructions
+ *
+ * Make changes as directed by your assignment guide.
+ */
 //////////////////////////////////////////////////////////////////////////////////////////
 package org.firstinspires.ftc.poeblack2;
 
@@ -8,10 +12,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 @Autonomous(name= "Assignment 2", group="Assignments")
-// TODO #1: Enable the Program
+// TODO #1: Enable the program
 @Disabled
 //////////////////////////////////////////////////////////////////////////////////////////
-public class Assignment2a extends LinearOpMode {
+public class Assignment2 extends LinearOpMode {
     BotUtilities util;
     Actuators actuators;
     Sensors sensors;
@@ -32,25 +36,28 @@ public class Assignment2a extends LinearOpMode {
         // Motion has started
         runtime.reset();
         while (opModeIsActive()) {
-            callTelemetry();
             runEverything();
+            callTelemetry();
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////
 
     private void runEverything() {
-        // TODO #2: Using variables - pot to servo
+        // TODO #2: Use the potentiometer reading to control the servo position
 
-        // TODO #3: Using variables - pot to CR servo
+        // TODO #3: Use the potentiometer reading to control the CR servo power
 
-        // TODO #4: Telemetry by buttons
-
-        // TODO #5: Using variables - pot to Motor & button direction control
+        // TODO #4: Use an if / else-if / else structure to control the motor
+        //          using the push button, with speed from the potentiometer
 
     }
+
     private void callTelemetry() {
         // Show the elapsed game time
         telemetry.addData("Run Time: ", runtime.toString());
+
+        // TODO #5: Use an if-else statement to display a telemetry message
+        //          based on the limit switch state
 
         // Display Values of all the attached sensors
         sensors.printSensorTelemetry();

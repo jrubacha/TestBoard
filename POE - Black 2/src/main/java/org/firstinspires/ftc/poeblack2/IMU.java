@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.crane;
+package org.firstinspires.ftc.poeblack2;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -6,8 +6,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
-
-// test
 
 public class IMU {
     // The universal IMU sensor object (works with both BNO055 and BHI260AP)

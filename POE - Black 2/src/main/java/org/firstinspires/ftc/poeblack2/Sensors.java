@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.poeblack2;
 
+import android.graphics.Color;
+
 import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
@@ -15,6 +17,7 @@ public class Sensors {
     private TouchSensor pushButton, limitSwitch;
     private AnalogInput pot;
     private ColorSensor color;
+    IMU imu;
     Telemetry telemetry;
 
     // Constructor
@@ -24,6 +27,7 @@ public class Sensors {
         pot = hardwareMap.get(AnalogInput.class, "potentiometer");
         limitSwitch = hardwareMap.get(TouchSensor.class, "limitSwitch");
         color = hardwareMap.get(ColorSensor.class, "colorV3");
+        imu = new IMU(hardwareMap, telemetry);
     }
 
     // pushButton
@@ -46,9 +50,9 @@ public class Sensors {
     public double getPotReading(){
         return mapPotReading();
     }
-
     public void printPotReading(){
-        telemetry.addData("Potentiometer", getPotReading());
+        telemetry.addData("Potentiometer (raw)", getRawPotReading());
+        telemetry.addData("Potentiometer (mapped)", getPotReading());
     }
     public double mapPotReading(){
         return getRawPotReading() / 3.321;
@@ -62,18 +66,33 @@ public class Sensors {
         int[] rgb = {color.red(), color.green(), color.blue()};
         return rgb;
     }
+    public float[] getHSV(){
+        float[] hsv = new float[3];
+        Color.RGBToHSV(color.red(), color.green(), color.blue(), hsv);
+        return hsv;
+    }
     public void printColorSensorValues() {
-        telemetry.addData("Red", color.red());
-        telemetry.addData("Green", color.green());
-        telemetry.addData("Blue", color.blue());
+        float[] hsv = getHSV();
+        telemetry.addData("  Red", color.red());
+        telemetry.addData("  Green", color.green());
+        telemetry.addData("  Blue", color.blue());
+        telemetry.addData("  Alpha", color.alpha());
+        telemetry.addData("  Hue", "%.1f", hsv[0]);
+        telemetry.addData("  Saturation", "%.3f", hsv[1]);
+        telemetry.addData("  Value", "%.3f", hsv[2]);
     }
 
     // Sensor Telemetry
     public void printSensorTelemetry(){
         telemetry.addLine("\n=== Sensors ===");
+        telemetry.addLine("--- Digital ---");
         printPushButtonState();
         printLimitSwitchState();
+        telemetry.addLine("--- Analog ---");
         printPotReading();
+        telemetry.addLine("--- Color Sensor ---");
         printColorSensorValues();
+        telemetry.addLine("--- IMU ---");
+        imu.printIMUTelemetry();
     }
 }

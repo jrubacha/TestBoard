@@ -1,111 +1,67 @@
 /** TODO: Read the following instructions
  *
- * Follow along with the assignment on Canvas to use this OpMode
- *
- * Except where specified, do NOT make any changes to the program.
+ * Make changes as directed by your assignment guide.
  */
-
+//////////////////////////////////////////////////////////////////////////////////////////
 package org.firstinspires.ftc.poeblack4;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-@TeleOp(name="Assignment 2", group="actuators")
-
-@Disabled        // Comment/Uncomment this line as needed to show/hide this opmode
+@Autonomous(name= "Assignment 2", group="Assignments")
+// TODO #1: Enable the program
+@Disabled
 //////////////////////////////////////////////////////////////////////////////////////////
-
-public class Assignment2 extends OpMode {
-    private ElapsedTime runtime = new ElapsedTime();
-    Sensors sensors;
+public class Assignment2 extends LinearOpMode {
+    BotUtilities util;
     Actuators actuators;
+    Sensors sensors;
+    private ElapsedTime runtime = new ElapsedTime();
 
-//////////////////////////////////////////////////////////////////////////////////////////
-
-    /* Code to run ONCE when the driver hits INIT */
     @Override
-    public void init() {
-        // Create our two objects needed for this assignment
-        sensors = new Sensors(hardwareMap, telemetry);
+    public void runOpMode() {
+        util = new BotUtilities(telemetry);
         actuators = new Actuators(hardwareMap, telemetry);
+        sensors = new Sensors(hardwareMap, telemetry);
 
-
-        // Tell the user that initialization is complete.
-        telemetry.addLine("actuators is now ready to be used.");
+        telemetry.addLine("Test board initialized and ready");
         telemetry.update();
-    }
 
-//////////////////////////////////////////////////////////////////////////////////////////
+        // Wait for the game to start (driver presses PLAY)
+        waitForStart();
 
-    /* Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY */
-    @Override
-    public void init_loop() {
-    }
-
-//////////////////////////////////////////////////////////////////////////////////////////
-
-    /* Code to run ONCE when the driver hits PLAY */
-    @Override
-    public void start() {
+        // Motion has started
         runtime.reset();
-        getTelemetry();
+        while (opModeIsActive()) {
+            runEverything();
+            callTelemetry();
+        }
     }
+    //////////////////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////////////////////
+    private void runEverything() {
+        // TODO #2: Use the potentiometer reading to control the servo position
 
-    /* Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP */
-    @Override
-    public void loop() {
-        // Run actions for this sample opmode
-        runEverything();
+        // TODO #3: Use the potentiometer reading to control the CR servo power
 
-        // Call Telemetry
-        getTelemetry();
-
-    }
-
-//////////////////////////////////////////////////////////////////////////////////////////
-
-    /* Code to run ONCE after the driver hits STOP */
-    @Override
-    public void stop() {
-        telemetry.addData("Final runtime: ", runtime.toString());
-        telemetry.update();
-    }
-
-//////////////////////////////////////////////////////////////////////////////////////////
-
-    private void runEverything(){
-        double motorPower = 0.75;
-        // TODO: #2 Create a variable named restingServoPosition and set it equal to 0.5
-
-        // TODO: #3 Create a variable named targetServoPosition and set it equal to -0.25
-
-
-        actuators.setMotorPower(motorPower);
-
-        // TODO: #4 Utilize an if-else statement to control the servo using the pushbutton
+        // TODO #4: Use an if / else-if / else structure to control the motor
+        //          using the push button, with speed from the potentiometer
 
     }
 
-
-    private void getTelemetry() {
+    private void callTelemetry() {
         // Show the elapsed game time
         telemetry.addData("Run Time: ", runtime.toString());
 
-        // Use sensor data to add / remove a message
-        // TODO: #1 Create an if-else statement to display a custom message when the limit switch is pushed
-
+        // TODO #5: Use an if-else statement to display a telemetry message
+        //          based on the limit switch state
 
         // Display Values of all the attached sensors
         sensors.printSensorTelemetry();
+        actuators.printActuatorTelemetry();
         telemetry.update();
-    }  // getTelemetry
-
-
-
+    }
 }
-

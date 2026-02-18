@@ -51,10 +51,10 @@ public class IMU {
     }
 
     // Telemetry
-    public void getSystemInfo(){
+    public void printIMUTelemetry(){
         YawPitchRollAngles angles = imu.getRobotYawPitchRollAngles();
-        telemetry.addData("Yaw (Heading)", "%.2f Deg", angles.getYaw(AngleUnit.DEGREES));
-        telemetry.addData("Pitch", "%.2f Deg", angles.getPitch(AngleUnit.DEGREES));
-        telemetry.addData("Roll", "%.2f Deg", angles.getRoll(AngleUnit.DEGREES));
+        telemetry.addData("  Heading", "%.1f", angles.getYaw(AngleUnit.DEGREES));
+        telemetry.addData("  Roll", "%.1f", angles.getRoll(AngleUnit.DEGREES));
+        telemetry.addData("  Pitch", "%.1f", angles.getPitch(AngleUnit.DEGREES));
     }
 }
