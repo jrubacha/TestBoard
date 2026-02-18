@@ -1,92 +1,62 @@
 package org.firstinspires.ftc.crane;
 
-import com.qualcomm.hardware.bosch.BNO055IMU;
-import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.Func;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
-import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-import org.firstinspires.ftc.robotcore.external.navigation.Position;
-import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
-
-import java.util.Locale;
+import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
 // test
 
 public class IMU {
-    // The IMU sensor object
-    BNO055IMU imu;
-
-    // State used for updating telemetry
-    Orientation angles;
-    Acceleration gravity;
-
+    // The universal IMU sensor object (works with both BNO055 and BHI260AP)
+    com.qualcomm.robotcore.hardware.IMU imu;
 
     Telemetry telemetry;
 
     public IMU(HardwareMap hardwareMap, Telemetry telemetry){
         this.telemetry = telemetry;
-        // Set up the parameters with which we will use our IMU. Note that integration
-        // algorithm here just reports accelerations to the logcat log; it doesn't actually
-        // provide positional information.
-        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
-        parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
-        parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-        parameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
-        parameters.loggingEnabled      = true;
-        parameters.loggingTag          = "IMU";
-        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
 
-        // Retrieve and initialize the IMU. We expect the IMU to be attached to an I2C port
-        // on a Core Device Interface Module, configured to be a sensor of type "AdaFruit IMU",
-        // and named "imu".
-        imu = hardwareMap.get(BNO055IMU.class, "imu");
-        imu.initialize(parameters);
+        // Retrieve the IMU from the hardware map using the universal IMU interface.
+        // This works with both the older BNO055 and the newer BHI260AP found in
+        // newer REV Control Hubs.
+        imu = hardwareMap.get(com.qualcomm.robotcore.hardware.IMU.class, "imu");
 
-        startIMUProcesses();
+        // Define how the control hub is mounted on the robot.
+        // Adjust LogoFacingDirection and UsbFacingDirection to match your robot's mounting.
+        RevHubOrientationOnRobot orientationOnRobot = new RevHubOrientationOnRobot(
+                RevHubOrientationOnRobot.LogoFacingDirection.UP,
+                RevHubOrientationOnRobot.UsbFacingDirection.FORWARD
+        );
 
-    }
-
-    public void startIMUProcesses(){
-        imu.startAccelerationIntegration(new Position(), new Velocity(), 1000);
-    }
-
-
-    public void findCurrentData(){
-        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-        gravity = imu.getGravity();
+        imu.initialize(new com.qualcomm.robotcore.hardware.IMU.Parameters(orientationOnRobot));
     }
 
     public double getHeading(){
-        findCurrentData();
-        return angles.firstAngle;
+        YawPitchRollAngles angles = imu.getRobotYawPitchRollAngles();
+        return angles.getYaw(AngleUnit.DEGREES);
     }
+
     public double getRoll(){
-        return angles.secondAngle;
+        YawPitchRollAngles angles = imu.getRobotYawPitchRollAngles();
+        return angles.getRoll(AngleUnit.DEGREES);
     }
+
     public double getPitch(){
-        return angles.thirdAngle;
+        YawPitchRollAngles angles = imu.getRobotYawPitchRollAngles();
+        return angles.getPitch(AngleUnit.DEGREES);
+    }
+
+    public void resetYaw(){
+        imu.resetYaw();
     }
 
     // Telemetry
     public void getSystemInfo(){
-        findCurrentData();
-        telemetry.addData("status", imu.getSystemStatus().toShortString());
-        telemetry.addData("calib", imu.getCalibrationStatus().toString());
-    }
-
-
-    // Formatting
-    private String formatAngle(AngleUnit angleUnit, double angle) {
-        return formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle));
-    }
-
-    private String formatDegrees(double degrees){
-        return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
+        YawPitchRollAngles angles = imu.getRobotYawPitchRollAngles();
+        telemetry.addData("Yaw (Heading)", "%.2f Deg", angles.getYaw(AngleUnit.DEGREES));
+        telemetry.addData("Pitch", "%.2f Deg", angles.getPitch(AngleUnit.DEGREES));
+        telemetry.addData("Roll", "%.2f Deg", angles.getRoll(AngleUnit.DEGREES));
     }
 }
