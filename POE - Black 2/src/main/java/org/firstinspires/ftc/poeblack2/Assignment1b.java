@@ -33,7 +33,8 @@ public class Assignment1b extends LinearOpMode {
         // TODO #1: Uncomment the line below
         //telemetry.addLine("Hello World!");
 
-        // TODO #2: Add a new telemetry line below with a custom message of your choosing
+        // TODO #2: Add a new telemetry line below with a custom message of your choosing.
+        // It must come before telemetry.update();
 
         telemetry.update();
 
