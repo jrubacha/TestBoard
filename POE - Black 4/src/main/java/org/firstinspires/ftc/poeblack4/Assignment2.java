@@ -50,14 +50,15 @@ public class Assignment2 extends LinearOpMode {
         // TODO #4: Use an if / else-if / else structure to control the motor
         //          using the push button, with speed from the potentiometer
 
+        // TODO #5: Use an if-else statement to display a telemetry message
+        //          based on the limit switch state
     }
 
     private void callTelemetry() {
         // Show the elapsed game time
         telemetry.addData("Run Time: ", runtime.toString());
 
-        // TODO #5: Use an if-else statement to display a telemetry message
-        //          based on the limit switch state
+
 
         // Display Values of all the attached sensors
         sensors.printSensorTelemetry();
